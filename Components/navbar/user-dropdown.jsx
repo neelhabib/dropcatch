@@ -13,7 +13,7 @@ import {
 import React from "react";
 import DarkModeSwitch from "./darkmodeswitch";
 import { useDispatch } from "react-redux";
-import { setLoggedIn } from "../../../Redux/reducer";
+import { setLoggedIn } from "../../Redux/reducer";
 import NextLink from "next/link";
 
 export default function UserDropdown() {

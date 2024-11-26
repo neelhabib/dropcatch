@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import AdminCredentials from "../../Admin/Components/Credentials";
+import AdminCredentials from "../../Credentials";
 
 export default function AdminCredential() {
   const router = useRouter();

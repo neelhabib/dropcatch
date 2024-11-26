@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setLoggedIn } from "../../../../Redux/reducer";
+import { setLoggedIn } from "../../Redux/reducer";
 import axios from "axios";
 import ErrorModal from "./Error";
 import { Button, useDisclosure } from "@nextui-org/react";

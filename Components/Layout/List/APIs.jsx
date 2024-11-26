@@ -1,19 +1,27 @@
 import { useRouter } from "next/router";
-import APIs from "../../Admin/Components/Apis";
-import SedoApi from "../../Admin/Components/SedoApi";
-import OpenAi from "../../Admin/Components/OpenAi";
+import NameCheapApi from "../../Apis/NameCheap";
+import DynadotApi from "../../Apis/Dynadot";
+import NameSiloApi from "../../Apis/NameSilo";
+import GodaddyApi from "../../Apis/Godaddy";
 
 export default function APIS() {
   const router = useRouter();
   const route = router.query.route;
+
   return (
     <>
       {route === "godaddy-api-setting" ? (
-        <APIs />
-      ) : route === "sedo-api-setting" ? (
-        <SedoApi />
-      ) : route === "open-ai-api-setting" ? (
-        <OpenAi />
+        <GodaddyApi />
+      ) : route === "namecheap-api-setting" ? (
+        <NameCheapApi />
+      ) : route === "dynadot-api-setting" ? (
+        <DynadotApi />
+      ) : route === "namesilo-api-setting" ? (
+        <NameSiloApi />
+      ) : route === "dynadot-api-setting" ? (
+        <DynadotApi />
+      ) : route === "dynadot-api-setting" ? (
+        <DynadotApi />
       ) : (
         ""
       )}

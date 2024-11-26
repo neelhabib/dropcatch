@@ -7,7 +7,8 @@ import SidebarMenu from "./sidebar-menu";
 import useSidebarContext from "../layout/useSidebarContext";
 import { useRouter } from "next/router";
 import Credentials from "./List/Credentials";
-import DataBases from "./List/Database";
+import HomePage from "./List/HomePage";
+import APIs from "./List/APIs";
 export default function SidebarWrapper() {
   const router = useRouter();
   const { collapsed, setCollapsed } = useSidebarContext();
@@ -42,8 +43,11 @@ export default function SidebarWrapper() {
               href="/admin"
             />
             <SidebarMenu title="Settings">
-              <DataBases />
+              <HomePage />
               <Credentials />
+            </SidebarMenu>
+            <SidebarMenu title="APIs">
+              <APIs />
             </SidebarMenu>
             {/* Lists  */}
           </div>

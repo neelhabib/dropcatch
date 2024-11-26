@@ -1,5 +1,5 @@
 const { nextui } = require("@nextui-org/react");
-const plugin = require("preline/plugin");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -16,5 +16,5 @@ module.exports = {
     extend: {},
   },
   darkMode: "class",
-  plugins: [nextui(), plugin],
+  plugins: [nextui()],
 };

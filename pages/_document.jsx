@@ -22,7 +22,7 @@ class MyDocument extends Document {
           />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap"
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cInter:300,400,500,600,700,800,900&amp;display=swap"
             rel="stylesheet"
           />
         </Head>

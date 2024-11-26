@@ -1,15 +1,14 @@
 import { useRouter } from "next/router";
 import SidebarItem from "../sidebar-item";
-import DevIcon from "../../icons/sidebar/dev-icon";
 import SettingsIcon from "../../icons/sidebar/settings-icon";
-export default function DataBases() {
+export default function HomePage() {
   const router = useRouter();
   return (
     <>
       <SidebarItem
-        isActive={router.asPath === "/admin/database"}
-        title="Site Setting"
-        href="/admin/database"
+        isActive={router.asPath === "/"}
+        title="Drop Catch"
+        href="/"
         icon={<SettingsIcon />}
       />
     </>

@@ -1,0 +1,27 @@
+{
+  "apis": [
+    {
+      "godaddy": {
+        "api": "24234234",
+        "secret": "2424234234"
+      }
+    },
+    {
+      "nameCheap": {
+        "api": "sfsdfdsfsfsfsdfsfsdfsfsfdsdf",
+        "userName": "sfasdf2423423423423sdfsdfdsf",
+        "clientIp": "23423423443223423423sdfdsf"
+      }
+    },
+    {
+      "dynadot": {
+        "api": "sfsfsfasfsfsdf"
+      }
+    },
+    {
+      "nameSilo": {
+        "api": "sfdsfdsf3234234"
+      }
+    }
+  ]
+}
