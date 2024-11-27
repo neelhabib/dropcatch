@@ -4,6 +4,10 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { Provider } from "react-redux";
 import store from "../Redux/store";
 import MyLayout from "../Components/Layout";
+
+// import io from "socket.io-client";
+// export const socket = io();
+
 function MyApp({ Component, pageProps }) {
   return (
     <NextThemesProvider defaultTheme="light" attribute="class">

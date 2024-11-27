@@ -1,11 +1,19 @@
-import { Button, Chip, Divider, Input, Spacer } from "@nextui-org/react";
+import {
+  Button,
+  Card,
+  CardBody,
+  Chip,
+  Divider,
+  Input,
+  Spacer,
+} from "@nextui-org/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
-export default function NameSiloApi() {
+export default function SpaceShipApi() {
   const [api, setApi] = useState("");
-  // const [partnerId, setPartnerId] = useState("");
+  const [secret, setSecret] = useState("");
   const [loading, setLoading] = useState(false);
   const token = JSON.parse(localStorage.getItem("lg_tk"));
 
@@ -13,8 +21,9 @@ export default function NameSiloApi() {
   const handleSave = (e) => {
     setLoading(true);
     axios
-      .post("/api/apis/namesilo", {
+      .post("/api/apis/spaceship", {
         api,
+        secret,
         token,
       })
       .then((res) => {
@@ -23,7 +32,6 @@ export default function NameSiloApi() {
       })
       .catch((err) => {
         setLoading(false);
-        console.log(err);
         toast.error("Some Error Occurred", { position: "bottom-right" });
       });
   };
@@ -31,11 +39,12 @@ export default function NameSiloApi() {
   // this is to get the ads settings from the server
   useEffect(() => {
     axios
-      .get("/api/apis/namesilo", { params: { token: token?.token } })
+      .get("/api/apis/spaceship", { params: { token: token?.token } })
       .then((res) => {
-        const nameSilo = res.data?.apis?.find((x) => x?.nameSilo);
-        if (nameSilo?.nameSilo) {
-          setApi(nameSilo?.nameSilo?.api);
+        const spaceShip = res.data?.apis?.find((x) => x?.spaceShip);
+        if (spaceShip?.spaceShip) {
+          setApi(spaceShip?.spaceShip?.api);
+          setSecret(spaceShip?.spaceShip?.secret);
         }
       });
   }, []);
@@ -43,23 +52,33 @@ export default function NameSiloApi() {
   return (
     <div className="mx-4">
       <Toaster />
+
       <h4 className="text-xl font-semibold text-violet-700 mb-2">
-        Namesilo API Settings
+        SpaceShip API Settings
       </h4>
 
       <Divider />
+
       <Spacer y={2} />
-      <Chip variant="flat" radius="sm" color={"secondary"}>
-        Please enter API and other details.
-      </Chip>
       <div>
+        <Chip variant="flat" radius="sm" color={"secondary"}>
+          Please enter API and other details.
+        </Chip>
         <Spacer y={2} />
         <Input
           value={api}
           onChange={(e) => setApi(e.target.value)}
           type="text"
-          label="Namesilo Api Key"
-          placeholder="q1333c40a7d8c36941sd4262fb63rt"
+          label="API Key"
+          placeholder="A535djNWJjt_DrfBSPADvpceZtw7mu1hkn"
+        />
+        <Spacer y={2} />
+        <Input
+          value={secret}
+          onChange={(e) => setSecret(e.target.value)}
+          type="text"
+          label="Secret"
+          placeholder="753LQ7yZ2Hxba4mrZcR9Br"
         />
 
         <Spacer y={4} />
@@ -74,7 +93,6 @@ export default function NameSiloApi() {
           Save
         </Button>
       </div>
-      {/* </CardBody> */}
     </div>
   );
 }

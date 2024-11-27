@@ -55,8 +55,7 @@ export default function NameCheapApi() {
       <Divider />
       <Spacer y={2} />
       <Chip variant="flat" radius="sm" color={"secondary"}>
-        If you disable, premium domains will not shown. Please refer to the
-        documentation on how to get Sedo API for free.
+        Please enter API and other details.
       </Chip>
       <div>
         <Spacer y={2} />

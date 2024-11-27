@@ -3,6 +3,7 @@ import NameCheapApi from "../../Apis/NameCheap";
 import DynadotApi from "../../Apis/Dynadot";
 import NameSiloApi from "../../Apis/NameSilo";
 import GodaddyApi from "../../Apis/Godaddy";
+import SpaceShipApi from "../../Apis/SpaceShip";
 
 export default function APIS() {
   const router = useRouter();
@@ -18,8 +19,8 @@ export default function APIS() {
         <DynadotApi />
       ) : route === "namesilo-api-setting" ? (
         <NameSiloApi />
-      ) : route === "dynadot-api-setting" ? (
-        <DynadotApi />
+      ) : route === "spaceship-api-setting" ? (
+        <SpaceShipApi />
       ) : route === "dynadot-api-setting" ? (
         <DynadotApi />
       ) : (

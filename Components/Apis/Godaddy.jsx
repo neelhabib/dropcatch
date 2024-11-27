@@ -62,7 +62,7 @@ export default function GodaddyApi() {
       <Spacer y={2} />
       <div>
         <Chip variant="flat" radius="sm" color={"secondary"}>
-          Please refer to the documentation on how to get Godaddy API for free.
+          Please enter API and other details.
         </Chip>
         <Spacer y={2} />
         <Input

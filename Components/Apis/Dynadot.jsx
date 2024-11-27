@@ -50,8 +50,7 @@ export default function DynadotApi() {
       <Divider />
       <Spacer y={2} />
       <Chip variant="flat" radius="sm" color={"secondary"}>
-        If you disable, premium domains will not shown. Please refer to the
-        documentation on how to get Sedo API for free.
+        Please enter API and other details.
       </Chip>
       <div>
         <Spacer y={2} />
@@ -59,7 +58,7 @@ export default function DynadotApi() {
           value={api}
           onChange={(e) => setApi(e.target.value)}
           type="text"
-          label="API Key"
+          label="API Production Key"
           placeholder="q1333c40a7d8c36941sd4262fb63rt"
         />
 

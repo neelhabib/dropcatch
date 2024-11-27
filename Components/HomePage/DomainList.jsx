@@ -1,6 +1,8 @@
 import {
+  Chip,
   Table,
   TableBody,
+  TableCell,
   TableColumn,
   TableHeader,
   TableRow,
@@ -10,26 +12,14 @@ import dayjs from "dayjs";
 export default function DomainList({ whoisData }) {
   return (
     <div>
-      <div className="d-flex align-items-center justify-content-center py-2">
-        <h6 className="mb-0 ">
-          Resolved:{" "}
-          <span className="badge bg-success rounded-pill">
-            {whoisData && whoisData?.length}
-          </span>
-        </h6>
-
-        {/* <Button
-          disabled={whoisData?.length > 0 ? false : true}
-          variant="falcon-default"
-          size="sm"
-          className="px-1 fs--2 ms-6"
-          onClick={download}
-        >
-          <ArrowDownCircleFill size={12} className="" /> Download
-        </Button> */}
+      <div className="flex items-center">
+        <span className="text-sm mr-2">Resolved: </span>
+        <Chip color="success" size="sm" radius="sm" variant="flat">
+          {whoisData && whoisData?.length}
+        </Chip>
       </div>
 
-      <Table removeWrapper>
+      <Table isStriped isCompact classNames={{ wrapper: "shadow-none" }}>
         <TableHeader>
           <TableColumn className="fs--1 text-nowrap">Request</TableColumn>
           <TableColumn className="fs--1 text-nowrap">Domain</TableColumn>

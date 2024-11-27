@@ -3,7 +3,7 @@
   "version": "1.0",
   "private": true,
   "scripts": {
-    "dev": "node server.js",
+    "dev": "nodemon server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "lint": "next lint"
@@ -25,7 +25,11 @@
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-redux": "^8.1.2",
-    "simplebar-react": "^3.2.6"
+    "simplebar-react": "^3.2.6",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
+    "whois-light": "^1.1.7",
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.15",

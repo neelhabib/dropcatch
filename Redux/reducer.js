@@ -4,11 +4,11 @@ const initialState = {
   dropCatch: "",
   nameCheapCatched: "",
   dynadotCatched: "",
-  epikCatched: "",
+  nameSiloCatched: "",
   godaddyCatched: "",
   nameCheapWhois: "",
   dynadotWhois: "",
-  epikWhois: "",
+  nameSiloWhois: "",
   godaddyWhois: "",
 };
 
@@ -38,10 +38,10 @@ export const reducer = createSlice({
           ? [...state.dynadotCatched, action.payload]
           : action.payload;
     },
-    setEpikCatched: (state, action) => {
-      state.epikCatched =
+    setNamesiloCatched: (state, action) => {
+      state.nameSiloCatched =
         action.payload != ""
-          ? [...state.epikCatched, action.payload]
+          ? [...state.nameSiloCatched, action.payload]
           : action.payload;
     },
     setGodaddyCatched: (state, action) => {
@@ -62,10 +62,10 @@ export const reducer = createSlice({
           ? [...state.dynadotWhois, action.payload]
           : action.payload;
     },
-    setEpikWhois: (state, action) => {
-      state.epikWhois =
+    setNamesiloWhois: (state, action) => {
+      state.nameSiloWhois =
         action.payload != ""
-          ? [...state.epikWhois, action.payload]
+          ? [...state.nameSiloWhois, action.payload]
           : action.payload;
     },
     setGodaddyWhois: (state, action) => {
@@ -82,10 +82,10 @@ export const {
   setDropCatch,
   setNameCheapCatched,
   setDynadotCatched,
-  setEpikCatched,
+  setNamesiloCatched,
   setGodaddyCatched,
   setDynadotWhois,
-  setEpikWhois,
+  setNamesiloWhois,
   setGodaddyWhois,
   setNameCheapWhois,
 } = reducer.actions;

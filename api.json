@@ -2,25 +2,31 @@
   "apis": [
     {
       "godaddy": {
-        "api": "24234234",
-        "secret": "2424234234"
+        "api": "3mM44WkB24k3LN_Gsx3EHJtGPNPB3LeqETg3o",
+        "secret": "2Wj4rs4qzmVnGgPpYQfHg9"
       }
     },
     {
       "nameCheap": {
-        "api": "sfsdfdsfsfsfsdfsfsdfsfsfdsdf",
-        "userName": "sfasdf2423423423423sdfsdfdsf",
-        "clientIp": "23423423443223423423sdfdsf"
+        "api": "c2a4b598e31f416a99e6fb9181fbd2cf",
+        "userName": "neelhabib",
+        "clientIp": "123.12.22.432"
       }
     },
     {
       "dynadot": {
-        "api": "sfsfsfasfsfsdf"
+        "api": "9F8y639W7M6P8l7chFy8sLy6y7f7CE9G8AY9UQE"
       }
     },
     {
       "nameSilo": {
-        "api": "sfdsfdsf3234234"
+        "api": "ea7a02c6f07e6c2d36fa14c"
+      }
+    },
+    {
+      "spaceShip": {
+        "api": "kELSYKtcFijBzbl8ahOZ",
+        "secret": "J2401MQLkgh56CP9o37CaI9wvHLHDjIwi3pNgDrz501CzGwYTgoK2D2bgjOrFPi7"
       }
     }
   ]
