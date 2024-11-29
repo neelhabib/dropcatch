@@ -6,10 +6,12 @@ const initialState = {
   dynadotCatched: "",
   nameSiloCatched: "",
   godaddyCatched: "",
+  spaceShipCatched: "",
   nameCheapWhois: "",
   dynadotWhois: "",
   nameSiloWhois: "",
   godaddyWhois: "",
+  spaceShipWhois: "",
 };
 
 export const reducer = createSlice({
@@ -50,6 +52,12 @@ export const reducer = createSlice({
           ? [...state.godaddyCatched, action.payload]
           : action.payload;
     },
+    setSpaceShipCatched: (state, action) => {
+      state.spaceShipCatched =
+        action.payload != ""
+          ? [...state.spaceShipCatched, action.payload]
+          : action.payload;
+    },
     setNameCheapWhois: (state, action) => {
       state.nameCheapWhois =
         action.payload != ""
@@ -74,6 +82,12 @@ export const reducer = createSlice({
           ? [...state.godaddyWhois, action.payload]
           : action.payload;
     },
+    setSpaceShipWhois: (state, action) => {
+      state.spaceShipWhois =
+        action.payload != ""
+          ? [...state.spaceShipWhois, action.payload]
+          : action.payload;
+    },
   },
 });
 
@@ -88,5 +102,7 @@ export const {
   setNamesiloWhois,
   setGodaddyWhois,
   setNameCheapWhois,
+  setSpaceShipCatched,
+  setSpaceShipWhois,
 } = reducer.actions;
 export default reducer.reducer;

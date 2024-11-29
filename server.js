@@ -6,6 +6,7 @@ const GodaddyDropCatch = require("./SocketFunction/DropCatch/Godaddy");
 const NameCheapDropCatch = require("./SocketFunction/DropCatch/NameCheap");
 const DynadotDropCatch = require("./SocketFunction/DropCatch/Dynadot");
 const NameSiloDropCatch = require("./SocketFunction/DropCatch/NameSilo");
+const SpaceShipDropCatch = require("./SocketFunction/DropCatch/SpaceShip");
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
@@ -37,7 +38,9 @@ app.prepare().then(() => {
     socket.on("godaddy-dropcatch", (domain) =>
       GodaddyDropCatch(socket, domain)
     );
-
+    socket.on("spaceship-dropcatch", (domain) =>
+      SpaceShipDropCatch(socket, domain)
+    );
     socket.on("disconnect", () => {
       console.log("disconnected:", socket.id);
     });

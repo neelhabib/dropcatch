@@ -11,6 +11,8 @@ import {
   setNamesiloWhois,
   setGodaddyWhois,
   setNameCheapWhois,
+  setSpaceShipWhois,
+  setSpaceShipCatched,
 } from "../../Redux/reducer";
 
 import { socket } from "../../socket";
@@ -19,6 +21,7 @@ let nameCheapInterval;
 let dynadotInterval;
 let nameSiloInterval;
 let godaddyInterval;
+let spaceShipInterval;
 
 export default function DomainInput({
   apis,
@@ -68,9 +71,11 @@ export default function DomainInput({
     if (godaddy) dispatch(setGodaddyWhois(""));
     if (godaddy) dispatch(setGodaddyCatched(""));
 
+    if (spaceShip) dispatch(setSpaceShipWhois(""));
+    if (spaceShip) dispatch(setSpaceShipCatched(""));
+
     if (nameCheap) {
       if (nameCheapInterval) clearInterval(nameCheapInterval);
-
       nameCheapInterval = setInterval(() => {
         socket.emit(emit, {
           domains: data,
@@ -98,6 +103,15 @@ export default function DomainInput({
       godaddyInterval = setInterval(() => {
         socket.emit(emit, { domains: data, registrer: "godaddy", godaddyApi });
       }, Number(waitTime));
+    } else if (spaceShip) {
+      if (spaceShipInterval) clearInterval(spaceShipInterval);
+      spaceShipInterval = setInterval(() => {
+        socket.emit(emit, {
+          domains: data,
+          registrer: "spaceship",
+          spaceShipApi,
+        });
+      }, Number(waitTime));
     }
   };
 
@@ -108,6 +122,7 @@ export default function DomainInput({
       if (dynadot) dispatch(setDynadotWhois(res));
       if (nameSilo) dispatch(setNamesiloWhois(res));
       if (godaddy) dispatch(setGodaddyWhois(res));
+      if (spaceShip) dispatch(setSpaceShipWhois(res));
     });
     // dropcatch emit
     socket.on(catchEmit, (res) => {
@@ -115,6 +130,7 @@ export default function DomainInput({
       if (dynadot) dispatch(setDynadotCatched(res));
       if (nameSilo) dispatch(setNamesiloCatched(res));
       if (godaddy) dispatch(setGodaddyCatched(res));
+      if (spaceShip) dispatch(setSpaceShipCatched(res));
     });
 
     return () => {
@@ -129,6 +145,7 @@ export default function DomainInput({
     if (dynadot) clearInterval(dynadotInterval);
     if (nameSilo) clearInterval(nameSiloInterval);
     if (godaddy) clearInterval(godaddyInterval);
+    if (spaceShip) clearInterval(spaceShipInterval);
   };
   return (
     <form className="px-2">

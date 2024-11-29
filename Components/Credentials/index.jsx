@@ -13,9 +13,10 @@ import toast, { Toaster } from "react-hot-toast";
 export default function AdminCredentials() {
   const [adminId, setAdminId] = useState("");
   const [adminPassword, setAdminPassword] = useState("");
-  const [analyticId, setAnalyticId] = useState("");
+
   const [loading, setLoading] = useState(false);
   const token = JSON.parse(localStorage.getItem("lg_tk"));
+
   const handleSave = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -23,7 +24,6 @@ export default function AdminCredentials() {
       .post("/api/admin-credential", {
         adminId,
         adminPassword,
-        analyticId,
         token,
       })
       .then((res) => {
@@ -36,10 +36,9 @@ export default function AdminCredentials() {
   };
 
   useEffect(() => {
-    axios.get("/api/admin-credential").then((res) => {
+    axios.get("/api/admin-credential", { params: { token } }).then((res) => {
       if (res.data) {
         setAdminId(res.data?.adminId);
-        setAnalyticId(res.data?.analyticId);
       }
     });
   }, []);
@@ -69,13 +68,6 @@ export default function AdminCredentials() {
             type="password"
             label="Admin Password"
             isRequired
-          />
-          <Spacer y="1" />
-          <Input
-            value={analyticId}
-            onChange={(e) => setAnalyticId(e.target.value)}
-            type="text"
-            label="Google Analytic Measurement ID v4"
           />
 
           <Spacer y="4" />

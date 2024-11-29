@@ -113,7 +113,6 @@ async function GodaddyDropCatch(socket, data) {
           });
         })
         .catch((err) => {
-          console.log("error", err?.response?.data);
           socket.emit("godaddy-catched", {
             domain,
             status: err?.response?.data?.code || "success",
@@ -148,10 +147,10 @@ async function GodaddyDropCatch(socket, data) {
             socket.emit("godaddy-dropcatch", res);
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => err);
     }
   } catch (err) {
-    console.log(err);
+    console.log("some error occurred");
   }
 }
 module.exports = GodaddyDropCatch;

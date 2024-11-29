@@ -1,28 +1,52 @@
 const WhoisLight = require("whois-light");
 const axios = require("axios");
 
-async function DynadotDropCatch(socket, data) {
+async function SpaceShipDropCatch(socket, data) {
   try {
     const {
       domains,
-      dynadotApi: {
-        dynadot: { api },
+      spaceShipApi: {
+        spaceShip: { api, secret },
       },
     } = data;
+    console.log(api, secret);
+    const headers = {
+      "X-API-Key": api,
+      "X-API-Secret": secret,
+      "content-type": "application/json",
+    };
+
     for (const domain of domains) {
+      const body = {
+        name: domain,
+        autoRenew: false,
+        privacyProtection: { contactForm: true, level: "high" },
+        nameservers: {
+          provider: "basic",
+          hosts: ["ns1.exampledomain.com", "ns2.exampledomain.com"],
+        },
+        contacts: {
+          registrant: "1ZdMXpapqp9sle5dl8BlppTJXAzf5",
+          admin: "1ZdMXpapqp9sle5dl8BlppTJXAzf6",
+          tech: "1ZdMXpapqp9sle5dl8BlppTJXAzf5",
+          billing: "1ZdMXpapqp9sle5dl8BlppTJXAzf5",
+          attributes: ["1ZdMXpapqp9sle5dl8BlppTJXAzf8"],
+        },
+      };
       axios
-        .get(
-          `https://api.dynadot.com/api3.json?key=${api}&command=register&domain=${domain}&duration=1&currency=USD`
-        )
+        .post(`https://spaceship.dev/api/v1/domains/spaceship.com`, body, {
+          headers,
+        })
         .then((res) => {
-          socket.emit("dynadot-catched", {
+          console.log(res.data);
+          socket.emit("spaceship-catched", {
             domain,
             status: res.data?.RegisterResponse?.Status,
             errorStatus: res.data?.RegisterResponse?.Status,
             responseCode: res.data?.RegisterResponse?.ResponseCode,
           });
         })
-        .catch((err) => err);
+        .catch((err) => console.log(err));
     }
 
     for (const domain of domains) {
@@ -44,10 +68,10 @@ async function DynadotDropCatch(socket, data) {
               arr.push(chunk);
             }
             arr.map((x) => (obj[x[0]] = x[1]));
-            socket.emit("dynadot-dropcatch", obj);
+            socket.emit("spaceship-dropcatch", obj);
             // respond.json(obj);
           } else {
-            socket.emit("dynadot-dropcatch", res);
+            socket.emit("spaceship-dropcatch", res);
           }
         })
         .catch((err) => console.log(err));
@@ -57,4 +81,4 @@ async function DynadotDropCatch(socket, data) {
   }
 }
 
-module.exports = DynadotDropCatch;
+module.exports = SpaceShipDropCatch;

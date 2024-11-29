@@ -28,7 +28,7 @@ async function NameCheapDropCatch(socket, data) {
             });
           });
         })
-        .catch((err) => console.log(err));
+        .catch((err) => err);
     }
 
     for (const domain of domains) {

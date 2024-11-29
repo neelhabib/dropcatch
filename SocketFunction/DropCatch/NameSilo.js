@@ -23,7 +23,7 @@ async function NameSiloDropCatch(socket, data) {
             responseCode: res.data?.reply?.code,
           });
         })
-        .catch((err) => console.log(err));
+        .catch((err) => err);
     }
 
     for (const domain of domains) {
