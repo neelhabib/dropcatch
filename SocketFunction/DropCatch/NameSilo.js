@@ -18,7 +18,7 @@ async function NameSiloDropCatch(socket, data) {
           socket.emit("namesilo-catched", {
             domain,
             status:
-              res.data?.reply?.detail !== "success" ? "Failed" : "Success",
+              res.data?.reply?.detail !== "success" ? "Failed" : "success",
             errorStatus: res.data?.reply?.detail,
             responseCode: res.data?.reply?.code,
           });

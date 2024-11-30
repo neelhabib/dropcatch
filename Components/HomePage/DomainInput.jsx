@@ -152,12 +152,13 @@ export default function DomainInput({
       <div className="mb-1">
         {/* <p className="fs--1 text-500">List of Domains | one domain per line</p> */}
         <Textarea
+          classNames={{ label: "text-xs" }}
           className="List of Domains | one domain per line"
-          label="List of Domains | one domain per line"
+          label="One domain per line | Max 2 domains recommended"
           // variant="bordered"
           value={domains}
           onChange={(e) => setDomains(e.target.value)}
-          // placeholder={`namelooka.com\nbestproducts.com\nbuilder.io\nnamehunter.co`}
+          placeholder={`example.com\nbestdomain.com`}
           required
           minRows={7}
         />

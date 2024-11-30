@@ -12,6 +12,7 @@ const initialState = {
   nameSiloWhois: "",
   godaddyWhois: "",
   spaceShipWhois: "",
+  bulkWhois: "",
 };
 
 export const reducer = createSlice({
@@ -88,6 +89,12 @@ export const reducer = createSlice({
           ? [...state.spaceShipWhois, action.payload]
           : action.payload;
     },
+    setBulkWhois: (state, action) => {
+      state.bulkWhois =
+        action.payload != ""
+          ? [...state.bulkWhois, action.payload]
+          : action.payload;
+    },
   },
 });
 
@@ -104,5 +111,6 @@ export const {
   setNameCheapWhois,
   setSpaceShipCatched,
   setSpaceShipWhois,
+  setBulkWhois,
 } = reducer.actions;
 export default reducer.reducer;

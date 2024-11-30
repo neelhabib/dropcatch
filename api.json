@@ -3,14 +3,38 @@
     {
       "godaddy": {
         "api": "3mM44WkB24k3LN_Gsx3EHJtGPNPB3LeqETg3o",
-        "secret": "2Wj4rs4qzmVnGgPpYQfHg9"
+        "secret": "2Wj4rs4qzmVnGgPpYQfHg9",
+        "firstName": "Irfan",
+        "lastName": "Habib Choudhury",
+        "middleName": "",
+        "address1": "Sundarpur",
+        "address2": "Angina Kumarganj",
+        "city": "South Dinajpur",
+        "country": "IN",
+        "postalCode": "733141",
+        "state": "West Bengal",
+        "email": "neelhabib@gmail.com",
+        "org": "Irfan Habib Choudhury",
+        "phone": "+44.123 456 789",
+        "ns1": "ns1.digitalocean.com",
+        "ns2": "ns2.digitalocean.com"
       }
     },
     {
       "nameCheap": {
         "api": "c2a4b598e31f416a99e6fb9181fbd2cf",
         "userName": "neelhabib",
-        "clientIp": "123.12.22.432"
+        "clientIp": "223.233.21.196",
+        "firstName": "Irfan",
+        "lastName": "Habib Choudhury",
+        "address1": "Sundarpur",
+        "city": "South Dinajpur",
+        "country": "India",
+        "postalCode": "733141",
+        "state": "West Bengal",
+        "email": "neelhabib@gmail.com",
+        "org": "Irfan Habib Choudhury",
+        "phone": "+1.6613102107"
       }
     },
     {

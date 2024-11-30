@@ -10,7 +10,22 @@ export default async function handler(req, res) {
 
     switch (req.method) {
       case "POST": {
-        const { api, userName, clientIp, token } = req.body;
+        const {
+          api,
+          userName,
+          clientIp,
+          firstName,
+          lastName,
+          address1,
+          city,
+          country,
+          postalCode,
+          state,
+          email,
+          org,
+          phone,
+          token,
+        } = req.body;
         const tk = token?.token;
         if (isLoggedIn(tk)) {
           // Find the existing "nameCheap" entry, if it exists
@@ -21,10 +36,36 @@ export default async function handler(req, res) {
             nameCheapEntry.nameCheap.api = api;
             nameCheapEntry.nameCheap.userName = userName;
             nameCheapEntry.nameCheap.clientIp = clientIp;
+            nameCheapEntry.nameCheap.firstName = firstName;
+            nameCheapEntry.nameCheap.lastName = lastName;
+            nameCheapEntry.nameCheap.address1 = address1;
+            nameCheapEntry.nameCheap.city = city;
+            nameCheapEntry.nameCheap.country = country;
+            nameCheapEntry.nameCheap.postalCode = postalCode;
+            nameCheapEntry.nameCheap.state = state;
+            nameCheapEntry.nameCheap.email = email;
+            nameCheapEntry.nameCheap.org = org;
+            nameCheapEntry.nameCheap.phone = phone;
           } else {
             // Insert a new nameCheap entry
             await db.update(({ apis }) =>
-              apis.push({ nameCheap: { api, userName, clientIp } })
+              apis.push({
+                nameCheap: {
+                  api,
+                  userName,
+                  clientIp,
+                  firstName,
+                  lastName,
+                  address1,
+                  city,
+                  country,
+                  postalCode,
+                  state,
+                  email,
+                  org,
+                  phone,
+                },
+              })
             );
           }
           await db.write();

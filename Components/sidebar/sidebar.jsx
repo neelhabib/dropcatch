@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import Credentials from "./List/Credentials";
 import HomePage from "./List/HomePage";
 import APIs from "./List/APIs";
+import Whois from "./List/Whois";
 export default function SidebarWrapper() {
   const router = useRouter();
   const { collapsed, setCollapsed } = useSidebarContext();
@@ -23,33 +24,33 @@ export default function SidebarWrapper() {
           collapsed: collapsed,
         })} bg-gradient-to-r from-blue-800 to-violet-800`}
       >
-        <div className={Sidebar.Header()}>
-          {/* <CompaniesDropdown /> */}
+        {/* <div className={Sidebar.Header()}>
+      
           <Link className="" href="/" aria-label="Brand">
             <Image
               width={250}
-              // height={50}
+              height={50}
               alt="Your site logo"
               src="/images/logo/logo/logo.png"
             />
           </Link>
-        </div>
+        </div> */}
         <div className="flex flex-col justify-between h-full">
           <div className={Sidebar.Body()}>
-            <SidebarItem
+            {/* <SidebarItem
               title="Stats"
               icon={<HomeIcon />}
               isActive={router.pathname === "/admin"}
               href="/admin"
-            />
-            <SidebarMenu title="Settings">
+            /> */}
+            <SidebarMenu title="Items">
               <HomePage />
+              <APIs />
+              <Whois />
+            </SidebarMenu>
+            <SidebarMenu title="Settings">
               <Credentials />
             </SidebarMenu>
-            <SidebarMenu title="APIs">
-              <APIs />
-            </SidebarMenu>
-            {/* Lists  */}
           </div>
           <div className={Sidebar.Footer()}></div>
         </div>

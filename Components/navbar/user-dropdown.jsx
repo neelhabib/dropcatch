@@ -61,17 +61,7 @@ export default function UserDropdown() {
         >
           Change Credentials
         </DropdownItem>
-        <DropdownItem
-          key="visit-site"
-          as={Link}
-          href="/"
-          target="_blank"
-          color="secondary"
-        >
-          {/* <Link href={"/"} target="_blank" color="secondary"> */}
-          <p>Visit Site</p>
-          {/* </Link> */}
-        </DropdownItem>
+
         <DropdownItem
           key="logout"
           color="danger"

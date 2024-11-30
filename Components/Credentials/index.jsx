@@ -44,7 +44,7 @@ export default function AdminCredentials() {
   }, []);
 
   return (
-    <Card className="m-4 !border-0" shadow="lg">
+    <Card className="m-4">
       <Toaster />
       <CardHeader>
         <h4 className="text-xl font-semibold text-violet-700">

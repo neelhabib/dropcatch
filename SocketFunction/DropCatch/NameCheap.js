@@ -1,20 +1,35 @@
 const WhoisLight = require("whois-light");
 const axios = require("axios");
 const xml2js = require("xml2js");
-const { client } = require("../../db");
 const parser = new xml2js.Parser();
+
 async function NameCheapDropCatch(socket, data) {
   try {
     const {
       domains,
       nameCheapApi: {
-        nameCheap: { api, userName, clientIp },
+        nameCheap: {
+          api,
+          userName,
+          clientIp,
+          firstName,
+          lastName,
+          address1,
+          city,
+          country,
+          postalCode,
+          state,
+          email,
+          org,
+          phone,
+        },
       },
     } = data;
+
     for (const domain of domains) {
       axios
         .get(
-          `https://api.sandbox.namecheap.com/xml.response?ApiUser=${userName}&ApiKey=${api}&UserName=${userName}&Command=namecheap.domains.create&ClientIp=${clientIp}&DomainName=${domain}&Years=1&AuxBillingFirstName=John&AuxBillingLastName=Smith&AuxBillingAddress1=8939%20S.cross%20Blv&AuxBillingStateProvince=CA&AuxBillingPostalCode=90045&AuxBillingCountry=US&AuxBillingPhone=+1.6613102107&AuxBillingEmailAddress=john@gmail.com&AuxBillingOrganizationName=NC&AuxBillingCity=CA&TechFirstName=John&TechLastName=Smith&TechAddress1=8939%20S.cross%20Blvd&TechStateProvince=CA&TechPostalCode=90045&TechCountry=US&TechPhone=+1.6613102107&TechEmailAddress=john@gmail.com&TechOrganizationName=NC&TechCity=CA&AdminFirstName=John&AdminLastName=Smith&AdminAddress1=8939%cross%20Blvd&AdminStateProvince=CA&AdminPostalCode=9004&AdminCountry=US&AdminPhone=+1.6613102107&AdminEmailAddress=joe@gmail.com&AdminOrganizationName=NC&AdminCity=CA&RegistrantFirstName=John&RegistrantLastName=Smith&RegistrantAddress1=8939%20S.cross%20Blvd&RegistrantStateProvince=CS&RegistrantPostalCode=90045&RegistrantCountry=US&RegistrantPhone=+1.6613102107&RegistrantEmailAddress=jo@gmail.com&RegistrantOrganizationName=NC&RegistrantCity=CA&AddFreeWhoisguard=no&WGEnabled=no&GenerateAdminOrderRefId=False&IsPremiumDomain=False&PremiumPrice=0&EapFee=0`
+          `https://api.sandbox.namecheap.com/xml.response?ApiUser=${userName}&ApiKey=${api}&UserName=${userName}&Command=namecheap.domains.create&ClientIp=${clientIp}&DomainName=${domain}&Years=1&AuxBillingFirstName=${firstName}&AuxBillingLastName=${lastName}&AuxBillingAddress1=${address1}&AuxBillingStateProvince=${state}&AuxBillingPostalCode=${postalCode}&AuxBillingCountry=${country}&AuxBillingPhone=${phone}&AuxBillingEmailAddress=${email}&AuxBillingOrganizationName=${org}&AuxBillingCity=${city}&TechFirstName=${firstName}&TechLastName=${lastName}&TechAddress1=${address1}&TechStateProvince=${state}&TechPostalCode=${postalCode}&TechCountry=${country}&TechPhone=${phone}&TechEmailAddress=${email}&TechOrganizationName=${org}&TechCity=${city}&AdminFirstName=${firstName}&AdminLastName=${lastName}&AdminAddress1=${address1}&AdminStateProvince=${state}&AdminPostalCode=${postalCode}&AdminCountry=${country}&AdminPhone=${phone}&AdminEmailAddress=${email}&AdminOrganizationName=${org}&AdminCity=${city}&RegistrantFirstName=${firstName}&RegistrantLastName=${lastName}&RegistrantAddress1=${address1}&RegistrantStateProvince=${state}&RegistrantPostalCode=${postalCode}&RegistrantCountry=${country}&RegistrantPhone=${phone}&RegistrantEmailAddress=${email}&RegistrantOrganizationName=${org}&RegistrantCity=${city}&AddFreeWhoisguard=no&WGEnabled=no&GenerateAdminOrderRefId=False&IsPremiumDomain=False&PremiumPrice=0&EapFee=0`
         )
         .then((res) => {
           parser.parseString(res.data, (err, json) => {

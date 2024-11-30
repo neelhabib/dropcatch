@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import AdminCredential from "./List/Credentials";
 import Home_Page from "./List/HomePage";
 import APIS from "./List/APIs";
+import Bulk_Whois from "./List/BulkWhois";
 
 // import AdminStat from "./List/AdminStats";
 
@@ -16,6 +17,7 @@ export default function MyLayout() {
           <Home_Page />
           <APIS />
           <AdminCredential />
+          <Bulk_Whois />
         </Layout>
       ) : (
         <AdminLogin />

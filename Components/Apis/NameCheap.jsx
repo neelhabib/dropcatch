@@ -7,6 +7,18 @@ export default function NameCheapApi() {
   const [api, setApi] = useState("");
   const [userName, setUserName] = useState("");
   const [clientIp, setClientIp] = useState("");
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [address1, setAddress1] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [state, setState] = useState("");
+  const [email, setEmail] = useState("");
+  const [org, setOrg] = useState("");
+  const [phone, setPhone] = useState("");
+
   const [loading, setLoading] = useState(false);
   const token = JSON.parse(localStorage.getItem("lg_tk"));
 
@@ -18,6 +30,17 @@ export default function NameCheapApi() {
         api,
         userName,
         clientIp,
+        firstName,
+        lastName,
+        address1,
+        city,
+        country,
+        postalCode,
+        state,
+        email,
+        org,
+        phone,
+
         token,
       })
       .then((res) => {
@@ -41,6 +64,16 @@ export default function NameCheapApi() {
           setApi(nameCheap?.nameCheap?.api);
           setUserName(nameCheap?.nameCheap?.userName);
           setClientIp(nameCheap?.nameCheap?.clientIp);
+          setFirstName(nameCheap?.nameCheap?.firstName);
+          setLastName(nameCheap?.nameCheap?.lastName);
+          setAddress1(nameCheap?.nameCheap?.address1);
+          setCity(nameCheap?.nameCheap?.city);
+          setCountry(nameCheap?.nameCheap?.country);
+          setPostalCode(nameCheap?.nameCheap?.postalCode);
+          setState(nameCheap?.nameCheap?.state);
+          setEmail(nameCheap?.nameCheap?.email);
+          setOrg(nameCheap?.nameCheap?.org);
+          setPhone(nameCheap?.nameCheap?.phone);
         }
       });
   }, []);
@@ -79,10 +112,77 @@ export default function NameCheapApi() {
           value={clientIp}
           onChange={(e) => setClientIp(e.target.value)}
           type="text"
-          label="Client IP Address"
+          label="Local / Server IP Address"
           placeholder="123.12.22.312"
         />
+        <Spacer y={4} />
+        <Chip variant="flat" radius="sm" color={"secondary"}>
+          Please enter Contact Information. This is mandetory.
+        </Chip>
+        <div className="grid grid-cols-3 gap-3">
+          <Input
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            type="text"
+            label="First Name"
+          />
 
+          <Input
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            type="text"
+            label="Last Name"
+          />
+          <Input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            label="Email"
+          />
+          <Input
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            type="text"
+            label="Phone Number | must formatted like +44.123 456 789"
+          />
+          <Input
+            value={address1}
+            onChange={(e) => setAddress1(e.target.value)}
+            type="text"
+            label="Address 1"
+          />
+
+          <Input
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            type="text"
+            label="City"
+          />
+          <Input
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
+            type="text"
+            label="Country"
+          />
+          <Input
+            value={postalCode}
+            onChange={(e) => setPostalCode(e.target.value)}
+            type="text"
+            label="Postal Code"
+          />
+          <Input
+            value={state}
+            onChange={(e) => setState(e.target.value)}
+            type="text"
+            label="State"
+          />
+          <Input
+            value={org}
+            onChange={(e) => setOrg(e.target.value)}
+            type="text"
+            label="Organization"
+          />
+        </div>
         <Spacer y={4} />
         <Button
           // isDisabled

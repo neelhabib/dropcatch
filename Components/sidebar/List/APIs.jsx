@@ -31,26 +31,26 @@ export default function APIs() {
             link: "/admin/namesilo-api-setting",
             bold: router.query.route === "namesilo-api-setting",
           },
-          {
-            text: "Spaceship",
-            link: "/admin/spaceship-api-setting",
-            bold: router.query.route === "spaceship-api-setting",
-          },
-          {
-            text: "Porkbun",
-            link: "/admin/porkbun-api-setting",
-            bold: router.query.route === "porkbun-api-setting",
-          },
-          {
-            text: "Open Provider",
-            link: "/admin/open-provider-api-setting",
-            bold: router.query.route === "open-provider-api-setting",
-          },
-          {
-            text: "Loopia",
-            link: "/admin/Loopia-api-setting",
-            bold: router.query.route === "Loopia-api-setting",
-          },
+          // {
+          //   text: "Spaceship",
+          //   link: "/admin/spaceship-api-setting",
+          //   bold: router.query.route === "spaceship-api-setting",
+          // },
+          // {
+          //   text: "Porkbun",
+          //   link: "/admin/porkbun-api-setting",
+          //   bold: router.query.route === "porkbun-api-setting",
+          // },
+          // {
+          //   text: "Open Provider",
+          //   link: "/admin/open-provider-api-setting",
+          //   bold: router.query.route === "open-provider-api-setting",
+          // },
+          // {
+          //   text: "Loopia",
+          //   link: "/admin/Loopia-api-setting",
+          //   bold: router.query.route === "Loopia-api-setting",
+          // },
         ]}
         title="API"
       />
