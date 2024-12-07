@@ -1,30 +1,35 @@
-import { JSONFilePreset } from "lowdb/node";
-import path from "path";
+import { client } from "../../../db";
 import isLoggedIn from "../isLoggedIn";
 export default async function handler(req, res) {
   try {
-    const filePath = path.join(process.cwd(), "api.json");
-    const apiData = { apis: [] };
-    const db = await JSONFilePreset(filePath, apiData);
-    const data = db.data;
-
     switch (req.method) {
       case "POST": {
         const { api, token } = req.body;
         const tk = token?.token;
         if (isLoggedIn(tk)) {
-          // Find the existing "nameSilo" entry, if it exists
-          const nameSiloEntry = data?.apis?.find((x) => x?.nameSilo);
-
-          if (nameSiloEntry) {
-            // Update the existing nameSilo entry
-            nameSiloEntry.nameSilo.api = api;
-          } else {
-            // Insert a new nameSilo entry
-            await db.update(({ apis }) => apis.push({ nameSilo: { api } }));
-          }
-          await db.write();
-          res.json({ status: true, message: "API Updated." });
+          client
+            .db("drop-catch")
+            .collection("apis")
+            .updateOne(
+              {},
+              {
+                $set: {
+                  nameSilo: {
+                    api,
+                  },
+                },
+              },
+              { upsert: true }
+            )
+            .then((doc) => {
+              res.json({ status: true, message: "API Updated." });
+            })
+            .catch((err) => {
+              res.json({
+                status: true,
+                message: "Some Error Occurred. Please try again.",
+              });
+            });
         } else {
           res.json({ status: true, message: "Login Expired. Login again." });
         }
@@ -34,7 +39,11 @@ export default async function handler(req, res) {
 
       case "GET": {
         if (isLoggedIn(req?.query?.token)) {
-          res.json(data);
+          client
+            .db("drop-catch")
+            .collection("apis")
+            .findOne({}, { projection: { nameSilo: 1 } })
+            .then((doc) => res.json(doc));
         }
         break;
       }

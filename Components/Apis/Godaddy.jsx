@@ -71,24 +71,23 @@ export default function GodaddyApi() {
     axios
       .get("/api/apis/godaddy", { params: { token: token?.token } })
       .then((res) => {
-        const godaddy = res.data?.apis?.find((x) => x?.godaddy);
-        if (godaddy?.godaddy) {
-          setApi(godaddy?.godaddy?.api);
-          setSecret(godaddy?.godaddy?.secret);
-          setFirstName(godaddy?.godaddy?.firstName);
-          setLastName(godaddy?.godaddy?.lastName);
-          setMiddleName(godaddy?.godaddy?.middleName);
-          setAddress1(godaddy?.godaddy?.address1);
-          setAddress2(godaddy?.godaddy?.address2);
-          setCity(godaddy?.godaddy?.city);
-          setCountry(godaddy?.godaddy?.country);
-          setPostalCode(godaddy?.godaddy?.postalCode);
-          setState(godaddy?.godaddy?.state);
-          setEmail(godaddy?.godaddy?.email);
-          setOrg(godaddy?.godaddy?.org);
-          setPhone(godaddy?.godaddy?.phone);
-          setNs1(godaddy?.godaddy?.ns1);
-          setNs2(godaddy?.godaddy?.ns2);
+        if (res?.data?.godaddy) {
+          setApi(res?.data?.godaddy?.api);
+          setSecret(res?.data?.godaddy?.secret);
+          setFirstName(res?.data?.godaddy?.firstName);
+          setLastName(res?.data?.godaddy?.lastName);
+          setMiddleName(res?.data?.godaddy?.middleName);
+          setAddress1(res?.data?.godaddy?.address1);
+          setAddress2(res?.data?.godaddy?.address2);
+          setCity(res?.data?.godaddy?.city);
+          setCountry(res?.data?.godaddy?.country);
+          setPostalCode(res?.data?.godaddy?.postalCode);
+          setState(res?.data?.godaddy?.state);
+          setEmail(res?.data?.godaddy?.email);
+          setOrg(res?.data?.godaddy?.org);
+          setPhone(res?.data?.godaddy?.phone);
+          setNs1(res?.data?.godaddy?.ns1);
+          setNs2(res?.data?.godaddy?.ns2);
         }
       });
   }, []);

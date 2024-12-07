@@ -4,24 +4,22 @@ async function GodaddyDropCatch(socket, data) {
   const {
     domains,
     godaddyApi: {
-      godaddy: {
-        api,
-        secret,
-        firstName,
-        lastName,
-        middleName,
-        address1,
-        address2,
-        city,
-        country,
-        postalCode,
-        state,
-        email,
-        org,
-        phone,
-        ns1,
-        ns2,
-      },
+      api,
+      secret,
+      firstName,
+      lastName,
+      middleName,
+      address1,
+      address2,
+      city,
+      country,
+      postalCode,
+      state,
+      email,
+      org,
+      phone,
+      ns1,
+      ns2,
     },
   } = data;
 
@@ -118,7 +116,7 @@ async function GodaddyDropCatch(socket, data) {
         renewAuto: true,
       };
       axios
-        .post(`https://api.ote-godaddy.com/v1/domains/purchase`, body, {
+        .post(`https://api.godaddy.com/v1/domains/purchase`, body, {
           headers,
         })
         .then((res) => {

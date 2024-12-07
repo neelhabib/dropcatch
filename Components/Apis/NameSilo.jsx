@@ -33,9 +33,8 @@ export default function NameSiloApi() {
     axios
       .get("/api/apis/namesilo", { params: { token: token?.token } })
       .then((res) => {
-        const nameSilo = res.data?.apis?.find((x) => x?.nameSilo);
-        if (nameSilo?.nameSilo) {
-          setApi(nameSilo?.nameSilo?.api);
+        if (res?.data?.nameSilo) {
+          setApi(res?.data?.nameSilo?.api);
         }
       });
   }, []);

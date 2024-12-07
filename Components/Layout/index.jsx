@@ -5,6 +5,7 @@ import AdminCredential from "./List/Credentials";
 import Home_Page from "./List/HomePage";
 import APIS from "./List/APIs";
 import Bulk_Whois from "./List/BulkWhois";
+import Auto from "./List/AutoCatch";
 
 // import AdminStat from "./List/AdminStats";
 
@@ -18,6 +19,7 @@ export default function MyLayout() {
           <APIS />
           <AdminCredential />
           <Bulk_Whois />
+          <Auto />
         </Layout>
       ) : (
         <AdminLogin />

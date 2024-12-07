@@ -10,6 +10,7 @@ import Credentials from "./List/Credentials";
 import HomePage from "./List/HomePage";
 import APIs from "./List/APIs";
 import Whois from "./List/Whois";
+import AutoCatch from "./List/AutoCatch";
 export default function SidebarWrapper() {
   const router = useRouter();
   const { collapsed, setCollapsed } = useSidebarContext();
@@ -45,10 +46,11 @@ export default function SidebarWrapper() {
             /> */}
             <SidebarMenu title="Items">
               <HomePage />
-              <APIs />
+              <AutoCatch />
               <Whois />
             </SidebarMenu>
             <SidebarMenu title="Settings">
+              <APIs />
               <Credentials />
             </SidebarMenu>
           </div>

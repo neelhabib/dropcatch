@@ -8,35 +8,36 @@ async function NameCheapDropCatch(socket, data) {
     const {
       domains,
       nameCheapApi: {
-        nameCheap: {
-          api,
-          userName,
-          clientIp,
-          firstName,
-          lastName,
-          address1,
-          city,
-          country,
-          postalCode,
-          state,
-          email,
-          org,
-          phone,
-        },
+        api,
+        userName,
+        clientIp,
+        firstName,
+        lastName,
+        address1,
+        city,
+        country,
+        postalCode,
+        state,
+        email,
+        org,
+        phone,
       },
     } = data;
 
     for (const domain of domains) {
       axios
         .get(
-          `https://api.sandbox.namecheap.com/xml.response?ApiUser=${userName}&ApiKey=${api}&UserName=${userName}&Command=namecheap.domains.create&ClientIp=${clientIp}&DomainName=${domain}&Years=1&AuxBillingFirstName=${firstName}&AuxBillingLastName=${lastName}&AuxBillingAddress1=${address1}&AuxBillingStateProvince=${state}&AuxBillingPostalCode=${postalCode}&AuxBillingCountry=${country}&AuxBillingPhone=${phone}&AuxBillingEmailAddress=${email}&AuxBillingOrganizationName=${org}&AuxBillingCity=${city}&TechFirstName=${firstName}&TechLastName=${lastName}&TechAddress1=${address1}&TechStateProvince=${state}&TechPostalCode=${postalCode}&TechCountry=${country}&TechPhone=${phone}&TechEmailAddress=${email}&TechOrganizationName=${org}&TechCity=${city}&AdminFirstName=${firstName}&AdminLastName=${lastName}&AdminAddress1=${address1}&AdminStateProvince=${state}&AdminPostalCode=${postalCode}&AdminCountry=${country}&AdminPhone=${phone}&AdminEmailAddress=${email}&AdminOrganizationName=${org}&AdminCity=${city}&RegistrantFirstName=${firstName}&RegistrantLastName=${lastName}&RegistrantAddress1=${address1}&RegistrantStateProvince=${state}&RegistrantPostalCode=${postalCode}&RegistrantCountry=${country}&RegistrantPhone=${phone}&RegistrantEmailAddress=${email}&RegistrantOrganizationName=${org}&RegistrantCity=${city}&AddFreeWhoisguard=no&WGEnabled=no&GenerateAdminOrderRefId=False&IsPremiumDomain=False&PremiumPrice=0&EapFee=0`
+          `https://api.namecheap.com/xml.response?ApiUser=${userName}&ApiKey=${api}&UserName=${userName}&Command=namecheap.domains.create&ClientIp=${clientIp}&DomainName=${domain}&Years=1&AuxBillingFirstName=${firstName}&AuxBillingLastName=${lastName}&AuxBillingAddress1=${address1}&AuxBillingStateProvince=${state}&AuxBillingPostalCode=${postalCode}&AuxBillingCountry=${country}&AuxBillingPhone=${phone}&AuxBillingEmailAddress=${email}&AuxBillingOrganizationName=${org}&AuxBillingCity=${city}&TechFirstName=${firstName}&TechLastName=${lastName}&TechAddress1=${address1}&TechStateProvince=${state}&TechPostalCode=${postalCode}&TechCountry=${country}&TechPhone=${phone}&TechEmailAddress=${email}&TechOrganizationName=${org}&TechCity=${city}&AdminFirstName=${firstName}&AdminLastName=${lastName}&AdminAddress1=${address1}&AdminStateProvince=${state}&AdminPostalCode=${postalCode}&AdminCountry=${country}&AdminPhone=${phone}&AdminEmailAddress=${email}&AdminOrganizationName=${org}&AdminCity=${city}&RegistrantFirstName=${firstName}&RegistrantLastName=${lastName}&RegistrantAddress1=${address1}&RegistrantStateProvince=${state}&RegistrantPostalCode=${postalCode}&RegistrantCountry=${country}&RegistrantPhone=${phone}&RegistrantEmailAddress=${email}&RegistrantOrganizationName=${org}&RegistrantCity=${city}&AddFreeWhoisguard=no&WGEnabled=no&GenerateAdminOrderRefId=False&IsPremiumDomain=False&PremiumPrice=0&EapFee=0`
         )
         .then((res) => {
           parser.parseString(res.data, (err, json) => {
             err && console.log(err);
             socket.emit("namecheap-catched", {
               domain,
-              status: json?.ApiResponse?.$?.Status,
+              status:
+                json?.ApiResponse?.$?.Status === "OK"
+                  ? "success"
+                  : json?.ApiResponse?.$?.Status,
               errorStatus: json?.ApiResponse?.Errors?.[0]?.Error?.[0]?._,
               responseCode:
                 json?.ApiResponse?.Errors?.[0]?.Error?.[0]?.$?.Number,

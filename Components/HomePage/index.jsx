@@ -11,8 +11,6 @@ import NameSiloCatched from "./NameSilo/Catched";
 import NameSiloWhois from "./NameSilo/WhoisList";
 import GodaddyCatched from "./Godaddy/Catched";
 import GodaddyWhois from "./Godaddy/WhoisList";
-import SpaceShipCatched from "./SpaceShip/Catched";
-import SpaceShipWhois from "./SpaceShip/WhoisList";
 import Godaddy from "./Icons/Godaddy";
 import NameCheap from "./Icons/NameCheap";
 import Dynadot from "./Icons/Dynadot";
@@ -38,8 +36,9 @@ export default function HomePage() {
 
   useEffect(() => {
     axios
-      .get("/api/apis/dynadot", { params: { token: token?.token } })
+      .get("/api/apis/all", { params: { token: token?.token } })
       .then((res) => {
+        // console.log(res.data);
         setApis(res.data);
       });
   }, []);
@@ -171,40 +170,6 @@ export default function HomePage() {
             </div>
           </div>
         </Tab>
-
-        {/* <Tab key="Spaceship" title="Spaceship">
-          <div className="m-4">
-            <div className="grid grid-cols-12 gap-2">
-              <div className="col-span-4">
-                <DomainInput
-                  spaceShip
-                  emit="spaceship-dropcatch"
-                  catchEmit={"spaceship-catched"}
-                  apis={apis}
-                />
-              </div>
-              <div className="col-span-8">
-                <SpaceShipCatched />
-              </div>
-            </div>
-
-            <div className="mt-6">
-              <SpaceShipWhois />
-            </div>
-          </div>
-        </Tab> */}
-        {/* <Tab key="Porkbun" title="Porkbun">
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-          officia deserunt mollit anim id est laborum.
-        </Tab>
-        <Tab key="Open Provider" title="Open Provider">
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-          officia deserunt mollit anim id est laborum.
-        </Tab>
-        <Tab key="Loopia" title="Loopia">
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-          officia deserunt mollit anim id est laborum.
-        </Tab> */}
       </Tabs>
     </Card>
   );

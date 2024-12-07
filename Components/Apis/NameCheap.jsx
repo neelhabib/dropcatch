@@ -58,22 +58,20 @@ export default function NameCheapApi() {
     axios
       .get("/api/apis/namecheap", { params: { token: token?.token } })
       .then((res) => {
-        const nameCheap = res.data?.apis?.find((x) => x?.nameCheap);
-
-        if (nameCheap?.nameCheap) {
-          setApi(nameCheap?.nameCheap?.api);
-          setUserName(nameCheap?.nameCheap?.userName);
-          setClientIp(nameCheap?.nameCheap?.clientIp);
-          setFirstName(nameCheap?.nameCheap?.firstName);
-          setLastName(nameCheap?.nameCheap?.lastName);
-          setAddress1(nameCheap?.nameCheap?.address1);
-          setCity(nameCheap?.nameCheap?.city);
-          setCountry(nameCheap?.nameCheap?.country);
-          setPostalCode(nameCheap?.nameCheap?.postalCode);
-          setState(nameCheap?.nameCheap?.state);
-          setEmail(nameCheap?.nameCheap?.email);
-          setOrg(nameCheap?.nameCheap?.org);
-          setPhone(nameCheap?.nameCheap?.phone);
+        if (res?.data?.nameCheap) {
+          setApi(res?.data?.nameCheap?.api);
+          setUserName(res?.data?.nameCheap?.userName);
+          setClientIp(res?.data?.nameCheap?.clientIp);
+          setFirstName(res?.data?.nameCheap?.firstName);
+          setLastName(res?.data?.nameCheap?.lastName);
+          setAddress1(res?.data?.nameCheap?.address1);
+          setCity(res?.data?.nameCheap?.city);
+          setCountry(res?.data?.nameCheap?.country);
+          setPostalCode(res?.data?.nameCheap?.postalCode);
+          setState(res?.data?.nameCheap?.state);
+          setEmail(res?.data?.nameCheap?.email);
+          setOrg(res?.data?.nameCheap?.org);
+          setPhone(res?.data?.nameCheap?.phone);
         }
       });
   }, []);

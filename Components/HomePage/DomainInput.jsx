@@ -40,11 +40,11 @@ export default function DomainInput({
   const [waitTime, setWaitTime] = useState(1000);
   const [loading, setLoading] = useState(false);
 
-  const godaddyApi = apis?.apis?.find((x) => x?.godaddy);
-  const nameCheapApi = apis?.apis?.find((x) => x?.nameCheap);
-  const dynadotApi = apis?.apis?.find((x) => x?.dynadot);
-  const nameSiloApi = apis?.apis?.find((x) => x?.nameSilo);
-  const spaceShipApi = apis?.apis?.find((x) => x?.spaceShip);
+  const godaddyApi = apis?.godaddy;
+  const nameCheapApi = apis?.nameCheap;
+  const dynadotApi = apis?.dynadot;
+  const nameSiloApi = apis?.nameSilo;
+  const spaceShipApi = apis?.spaceShip;
 
   const dispatch = useDispatch();
 

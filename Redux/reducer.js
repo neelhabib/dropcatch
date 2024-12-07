@@ -13,6 +13,7 @@ const initialState = {
   godaddyWhois: "",
   spaceShipWhois: "",
   bulkWhois: "",
+  apiQueries: [],
 };
 
 export const reducer = createSlice({
@@ -95,6 +96,9 @@ export const reducer = createSlice({
           ? [...state.bulkWhois, action.payload]
           : action.payload;
     },
+    setApiQueries: (state, action) => {
+      state.apiQueries = action.payload;
+    },
   },
 });
 
@@ -112,5 +116,6 @@ export const {
   setSpaceShipCatched,
   setSpaceShipWhois,
   setBulkWhois,
+  setApiQueries,
 } = reducer.actions;
 export default reducer.reducer;

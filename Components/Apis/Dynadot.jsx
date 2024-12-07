@@ -33,9 +33,8 @@ export default function DynadotApi() {
     axios
       .get("/api/apis/dynadot", { params: { token: token?.token } })
       .then((res) => {
-        const dynadot = res.data?.apis?.find((x) => x?.dynadot);
-        if (dynadot?.dynadot) {
-          setApi(dynadot?.dynadot?.api);
+        if (res?.data?.dynadot) {
+          setApi(res?.data?.dynadot?.api);
         }
       });
   }, []);

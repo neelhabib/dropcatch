@@ -5,9 +5,7 @@ async function DynadotDropCatch(socket, data) {
   try {
     const {
       domains,
-      dynadotApi: {
-        dynadot: { api },
-      },
+      dynadotApi: { api },
     } = data;
     for (const domain of domains) {
       axios

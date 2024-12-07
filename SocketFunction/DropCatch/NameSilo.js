@@ -5,9 +5,7 @@ async function NameSiloDropCatch(socket, data) {
   try {
     const {
       domains,
-      nameSiloApi: {
-        nameSilo: { api },
-      },
+      nameSiloApi: { api },
     } = data;
     for (const domain of domains) {
       axios
