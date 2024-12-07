@@ -3,7 +3,7 @@
   "version": "1.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon start.js",
+    "dev": "node start.js",
     "build": "next build",
     "start": "NODE_ENV=production node start.js",
     "lint": "next lint"

@@ -8,12 +8,12 @@ async function AutoCatchInterval() {
       await ProcessDomains(domains?.domains);
     }
 
-    // console.log("Waiting for next 10-second interval...");
-    setTimeout(runInterval, 5000);
+    // console.log("Waiting for next 1 minute interval...");
+    setTimeout(runInterval, 60000);
   }
 
   // Start the interval
-  setTimeout(runInterval, 5000);
+  setTimeout(runInterval, 60000);
 }
 
 module.exports = AutoCatchInterval;
