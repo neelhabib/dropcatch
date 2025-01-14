@@ -11,12 +11,13 @@ import HomePage from "./List/HomePage";
 import APIs from "./List/APIs";
 import Whois from "./List/Whois";
 import AutoCatch from "./List/AutoCatch";
+import Generator from "./List/Generator";
 export default function SidebarWrapper() {
   const router = useRouter();
   const { collapsed, setCollapsed } = useSidebarContext();
 
   return (
-    <aside className="h-screen z-[202] sticky top-0  custom-scrollbar ">
+    <aside className="h-screen z-[50] sticky top-0  custom-scrollbar ">
       {collapsed ? (
         <div className={Sidebar.Overlay()} onClick={setCollapsed} />
       ) : null}
@@ -44,11 +45,15 @@ export default function SidebarWrapper() {
               isActive={router.pathname === "/admin"}
               href="/admin"
             /> */}
-            <SidebarMenu title="Items">
+            <SidebarMenu title="Drop Catch">
               <HomePage />
               <AutoCatch />
+            </SidebarMenu>
+            <SidebarMenu title="Domain Tools">
+              <Generator />
               <Whois />
             </SidebarMenu>
+
             <SidebarMenu title="Settings">
               <APIs />
               <Credentials />

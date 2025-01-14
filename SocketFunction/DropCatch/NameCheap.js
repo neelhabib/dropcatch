@@ -66,10 +66,10 @@ async function NameCheapDropCatch(socket, data) {
               arr.push(chunk);
             }
             arr.map((x) => (obj[x[0]] = x[1]));
-            socket.emit("namecheap-dropcatch", obj);
+            socket.emit("namecheap-dropcatch", { whois: obj, domain });
             // respond.json(obj);
           } else {
-            socket.emit("namecheap-dropcatch", res);
+            socket.emit("namecheap-dropcatch", { whois: res, domain });
           }
         })
         .catch((err) => console.log(err));

@@ -116,7 +116,7 @@ async function GodaddyDropCatch(socket, data) {
         renewAuto: true,
       };
       axios
-        .post(`https://api.godaddy.com/v1/domains/purchase`, body, {
+        .post(`https://api.ote-godaddy.com/v1/domains/purchase`, body, {
           headers,
         })
         .then((res) => {
@@ -128,7 +128,7 @@ async function GodaddyDropCatch(socket, data) {
           });
         })
         .catch((err) => {
-          console.log(err?.response?.data?.fields);
+          // console.log("some error", err);
           socket.emit("godaddy-catched", {
             domain,
             status: err?.response?.data?.code || "success",
@@ -157,10 +157,11 @@ async function GodaddyDropCatch(socket, data) {
               arr.push(chunk);
             }
             arr.map((x) => (obj[x[0]] = x[1]));
-            socket.emit("godaddy-dropcatch", obj);
+            socket.emit("godaddy-dropcatch", { whois: obj, domain });
             // respond.json(obj);
           } else {
-            socket.emit("godaddy-dropcatch", res);
+            // console.log(res);
+            socket.emit("godaddy-dropcatch", { whois: res, domain });
           }
         })
         .catch((err) => err);

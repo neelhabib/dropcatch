@@ -9,7 +9,6 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import Modal from "./Modal";
-const cornerImg_2 = "./images/corner-2.png";
 
 export default function DynadotQueries({
   apiQueries,
@@ -23,6 +22,7 @@ export default function DynadotQueries({
     onOpen();
     setModalData(data);
   };
+  const cornerImg_2 = `${window.location.origin}/images/corner-2.pngs`;
   return (
     <>
       <Modal onOpenChange={onOpenChange} isOpen={isOpen} data={modalData} />

@@ -68,10 +68,10 @@ async function SpaceShipDropCatch(socket, data) {
               arr.push(chunk);
             }
             arr.map((x) => (obj[x[0]] = x[1]));
-            socket.emit("spaceship-dropcatch", obj);
+            socket.emit("spaceship-dropcatch", { whois: obj, domain });
             // respond.json(obj);
           } else {
-            socket.emit("spaceship-dropcatch", res);
+            socket.emit("spaceship-dropcatch", { whois: res, domain });
           }
         })
         .catch((err) => console.log(err));

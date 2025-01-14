@@ -151,6 +151,7 @@ async function Godaddy(domain) {
         errorStatus: err?.response?.data?.message || "failed",
         responseCode: err?.response?.data?.itemCount || "0",
         date: dayjs().format("MM DD YYYY"),
+        time: dayjs().format("HH:mm:ss"),
       });
   }
 }

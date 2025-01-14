@@ -72,59 +72,68 @@ export default function DomainList({ whoisData }) {
                           <Rows item={i + 1} />
                           <Rows
                             item={
-                              x["Domain Name"]?.toLowerCase() ||
-                              x["Domain name"]
+                              x?.whois?.["Domain Name"]?.toLowerCase() ||
+                              x?.whois?.["Domain name"] ||
+                              x?.domain
                             }
                           />
                           <Rows
                             item={
-                              x["Domain Status"]?.split(" ")?.[0] || "Dropped"
+                              x?.whois?.["Domain Status"]?.split(" ")?.[0] ||
+                              "Dropped"
                             }
                           />
                           <Rows
-                            item={x?.[">>> Last update of whois database"]
+                            item={x?.whois?.[
+                              ">>> Last update of whois database"
+                            ]
                               ?.split("<<<")?.[0]
                               ?.trim()}
                           />
                           <Rows
                             item={
-                              x["Creation Date"]
+                              x?.whois?.["Creation Date"]
                                 ? dayjs().$y -
-                                  dayjs(x["Creation Date"].slice(0, 10)).$y +
+                                  dayjs(
+                                    x?.whois?.["Creation Date"].slice(0, 10)
+                                  ).$y +
                                   " yrs"
-                                : x["Registered on"]
+                                : x?.whois?.["Registered on"]
                                 ? dayjs().$y -
-                                  dayjs(x["Registered on"]).$y +
+                                  dayjs(x?.whois?.["Registered on"]).$y +
                                   " yrs"
                                 : "N/A"
                             }
                           />
                           <Rows
                             item={
-                              x["Creation Date"]?.slice(0, 10) ||
-                              x["Registered on"] ||
+                              x?.whois?.["Creation Date"]?.slice(0, 10) ||
+                              x?.whois?.["Registered on"] ||
                               "N/A"
                             }
                           />
                           <Rows
                             item={
-                              x["Registry Expiry Date"]?.slice(0, 10) ||
-                              x["Expiry date"] ||
+                              x?.whois?.["Registry Expiry Date"]?.slice(
+                                0,
+                                10
+                              ) ||
+                              x?.whois?.["Expiry date"] ||
                               "N/A"
                             }
                           />
                           <Rows
                             item={
-                              x["Updated Date"]?.slice(0, 10) ||
-                              x["Last updated"] ||
+                              x?.whois?.["Updated Date"]?.slice(0, 10) ||
+                              x?.whois?.["Last updated"] ||
                               "N/A"
                             }
                           />
-                          <Rows item={x["Registrar"]} />
+                          <Rows item={x?.whois?.["Registrar"]} />
                           <Rows
                             item={
-                              x["Name Server"]?.toLowerCase() ||
-                              x["Name servers"]?.toLowerCase() ||
+                              x?.whois?.["Name Server"]?.toLowerCase() ||
+                              x?.whois?.["Name servers"]?.toLowerCase() ||
                               "N/A"
                             }
                           />

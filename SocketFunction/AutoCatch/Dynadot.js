@@ -30,6 +30,7 @@ async function Dynadot(domain) {
         errorStatus: data?.RegisterResponse?.Status,
         responseCode: data?.RegisterResponse?.ResponseCode,
         date: dayjs().format("MM DD YYYY"),
+        time: dayjs().format("HH:mm:ss"),
       });
   } catch (error) {
     console.log(error);

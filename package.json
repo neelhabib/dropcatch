@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@nextui-org/react": "^2.4.6",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.5.0",
@@ -22,15 +24,20 @@
     "mongodb": "^6.11.0",
     "next": "^13.4.2",
     "next-themes": "0.2.1",
+    "random-words": "^2.0.1",
     "react": "18.2.0",
+    "react-content-loader": "^7.0.2",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-redux": "^8.1.2",
     "react-scan": "^0.0.33",
     "simplebar-react": "^3.2.6",
+    "soap": "^1.1.7",
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1",
     "whois-light": "^1.1.7",
+    "wink-eng-lite-web-model": "^1.8.1",
+    "wink-nlp": "^2.3.2",
     "xml2js": "^0.6.2"
   },
   "devDependencies": {

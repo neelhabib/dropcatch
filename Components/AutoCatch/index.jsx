@@ -1,11 +1,8 @@
-import { Card, Tab, Tabs } from "@nextui-org/react";
+import { Button, Card, Image, Tab, Tabs } from "@nextui-org/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import DomainInput from "./DomainInput";
-import GodaddyCatched from "./Godaddy/Catched";
-import GodaddyWhois from "./Godaddy/WhoisList";
 import Godaddy from "./Icons/Godaddy";
-import SuccessNotification from "./SuccessNotif";
 import { useDispatch } from "react-redux";
 import { setApiQueries } from "../../Redux/reducer";
 import QueryCard from "./Dynadot/Queries";
@@ -26,13 +23,20 @@ export default function AutoCatch() {
     axios
       .get("/api/auto-catch/api-queries", { params: { token: token?.token } })
       .then((res) => {
-        setQueries(res.data);
-        dispatch(setApiQueries(res.data));
+        console.log(res.data?.reverse());
+        setQueries(res.data?.reverse());
+        dispatch(setApiQueries(res.data.reverse()));
       });
   }, []);
-
+  const cornerImg_2 = `${window.location.origin}/images/corner-2.png`;
   return (
     <Card className="m-2">
+      <Image
+        removeWrapper
+        alt="Card background"
+        className="z-0 w-full h-full object-contain object-right absolute"
+        src={cornerImg_2}
+      />
       <Tabs size="lg" fullWidth>
         <Tab key="Stats" title="Stats">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mx-2 mb-4">
@@ -85,6 +89,16 @@ export default function AutoCatch() {
         <Tab key="Domains" title="Domains">
           <div className="m-4">
             <DomainInput />
+          </div>
+        </Tab>
+        <Tab key="Delete" title="Delete">
+          <div className="flex flex-col items-center justify-center">
+            <Button isDisabled color="danger" size="lg" className="mt-4">
+              Delete Old Queries
+            </Button>
+            <p className="mt-2 text-sm">
+              Currently not available to delete old queries.
+            </p>
           </div>
         </Tab>
       </Tabs>

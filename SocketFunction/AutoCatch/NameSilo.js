@@ -30,6 +30,7 @@ async function NameSilo(domain) {
         errorStatus: data?.reply?.detail,
         responseCode: data?.reply?.code,
         date: dayjs().format("MM DD YYYY"),
+        time: dayjs().format("HH:mm:ss"),
       });
   } catch (error) {
     console.log(error);

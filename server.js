@@ -17,6 +17,7 @@ const createServer = async () => {
   await app.prepare();
 
   const server = express();
+  server.use(express.static("public"));
   const httpServer = http.createServer(server);
   const io = new Server(httpServer, {
     cors: {

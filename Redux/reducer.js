@@ -14,6 +14,15 @@ const initialState = {
   spaceShipWhois: "",
   bulkWhois: "",
   apiQueries: [],
+  relatedQuestions: [],
+  showRegistered: true,
+  domains: "",
+  showCard: false,
+  suggestedDomains: "",
+  prefix: "",
+  suffix: "",
+  godaddyAuctions: "",
+  sedoDomains: "",
 };
 
 export const reducer = createSlice({
@@ -99,6 +108,39 @@ export const reducer = createSlice({
     setApiQueries: (state, action) => {
       state.apiQueries = action.payload;
     },
+    setRelatedQuestions: (state, action) => {
+      state.relatedQuestions =
+        action.payload != ""
+          ? [...state.relatedQuestions, action.payload]
+          : action.payload;
+    },
+    setShowRegistered: (state, action) => {
+      state.showRegistered = !state.showRegistered;
+    },
+    setDomains: (state, action) => {
+      state.domains = action.payload;
+    },
+    setShowCard: (state, action) => {
+      state.showCard = action.payload;
+    },
+
+    setSuggestedDomains: (state, action) => {
+      state.suggestedDomains = action.payload;
+    },
+
+    setPrefix: (state, action) => {
+      state.prefix = action.payload;
+    },
+
+    setSuffix: (state, action) => {
+      state.suffix = action.payload;
+    },
+    setGodaddyAuctions: (state, action) => {
+      state.godaddyAuctions = action.payload;
+    },
+    setSedoDomains: (state, action) => {
+      state.sedoDomains = action.payload;
+    },
   },
 });
 
@@ -117,5 +159,14 @@ export const {
   setSpaceShipWhois,
   setBulkWhois,
   setApiQueries,
+  setRelatedQuestions,
+  setShowRegistered,
+  setDomains,
+  setShowCard,
+  setPrefix,
+  setSuffix,
+  setSuggestedDomains,
+  setGodaddyAuctions,
+  setSedoDomains,
 } = reducer.actions;
 export default reducer.reducer;

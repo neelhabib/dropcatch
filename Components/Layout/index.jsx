@@ -6,6 +6,7 @@ import Home_Page from "./List/HomePage";
 import APIS from "./List/APIs";
 import Bulk_Whois from "./List/BulkWhois";
 import Auto from "./List/AutoCatch";
+import Generator from "./List/Generator";
 
 // import AdminStat from "./List/AdminStats";
 
@@ -20,6 +21,7 @@ export default function MyLayout() {
           <AdminCredential />
           <Bulk_Whois />
           <Auto />
+          <Generator />
         </Layout>
       ) : (
         <AdminLogin />

@@ -42,10 +42,10 @@ async function DynadotDropCatch(socket, data) {
               arr.push(chunk);
             }
             arr.map((x) => (obj[x[0]] = x[1]));
-            socket.emit("dynadot-dropcatch", obj);
+            socket.emit("dynadot-dropcatch", { whois: obj, domain });
             // respond.json(obj);
           } else {
-            socket.emit("dynadot-dropcatch", res);
+            socket.emit("dynadot-dropcatch", { whois: res, domain });
           }
         })
         .catch((err) => console.log(err));

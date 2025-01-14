@@ -46,7 +46,7 @@ export default function AdminLogin() {
   }, []);
 
   return (
-    <main className="w-full h-screen flex flex-col items-center justify-center px-4 border border-red-500">
+    <main className="w-full h-screen flex flex-col items-center justify-center px-4">
       <ErrorModal isOpen={isOpen} onOpenChange={onOpenChange} />
       <Card className="text-gray-600 space-y-5 w-[500px]">
         <CardBody className="p-6">

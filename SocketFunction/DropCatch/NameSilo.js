@@ -43,10 +43,10 @@ async function NameSiloDropCatch(socket, data) {
               arr.push(chunk);
             }
             arr.map((x) => (obj[x[0]] = x[1]));
-            socket.emit("namesilo-dropcatch", obj);
+            socket.emit("namesilo-dropcatch", { whois: obj, domain });
             // respond.json(obj);
           } else {
-            socket.emit("namesilo-dropcatch", res);
+            socket.emit("namesilo-dropcatch", { whois: res, domain });
           }
         })
         .catch((err) => console.log(err));
