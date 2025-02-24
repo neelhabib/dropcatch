@@ -42,7 +42,7 @@ async function whois(domain) {
         domain,
         availability,
         time: dayjs().format("HH:mm:ss"),
-        date: dayjs().format("MM DD YYYY"),
+        date: dayjs().format("D MMM YYYY"),
       });
     return availability;
   } catch (err) {

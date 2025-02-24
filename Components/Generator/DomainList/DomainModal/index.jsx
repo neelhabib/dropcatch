@@ -52,25 +52,25 @@ export default function DomainModal({ data, isOpen, onOpenChange }) {
       axios
         .get("https://sugapi.verisign-grs.com/ns-api/2.0/suggest?", { params })
         .then((response) => setRelatedDomains(response.data?.results));
+
+      axios
+        .get(
+          `https://auctions.godaddy.com/beta/findApiProxy/v4/aftermarket/find/auction/recommend?paginationSize=100&paginationStart=0&query=${
+            data?.domain?.split(".")?.[0]
+          }&useExtRanker=true&useSemanticSearch=true`
+        )
+        .then((res) => {
+          dispatch(setGodaddyAuctions(res.data?.results));
+          // console.log(res.data);
+        });
+
+      axios
+        .post("/api/generator/sedo", { value: data?.domain?.split(".")?.[0] })
+        .then((res) => {
+          dispatch(setSedoDomains(res.data));
+          // console.log(res.data);
+        });
     }
-
-    axios
-      .get(
-        `https://auctions.godaddy.com/beta/findApiProxy/v4/aftermarket/find/auction/recommend?paginationSize=100&paginationStart=0&query=${
-          data?.domain?.split(".")?.[0]
-        }&useExtRanker=true&useSemanticSearch=true`
-      )
-      .then((res) => {
-        dispatch(setGodaddyAuctions(res.data?.results));
-        // console.log(res.data);
-      });
-
-    axios
-      .post("/api/generator/sedo", { value: data?.domain?.split(".")?.[0] })
-      .then((res) => {
-        dispatch(setSedoDomains(res.data));
-        // console.log(res.data);
-      });
   }, [data]);
 
   return (

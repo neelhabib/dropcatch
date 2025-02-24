@@ -138,7 +138,7 @@ async function Godaddy(domain) {
         status: data?.code || "success",
         errorStatus: data?.message || "",
         responseCode: data?.itemCount,
-        date: dayjs().format("MM DD YYYY"),
+        date: dayjs().format("D MMM YYYY"),
       });
   } catch (err) {
     // console.log(error?.response?.data?.fields);
@@ -150,7 +150,7 @@ async function Godaddy(domain) {
         status: err?.response?.data?.code || "failed",
         errorStatus: err?.response?.data?.message || "failed",
         responseCode: err?.response?.data?.itemCount || "0",
-        date: dayjs().format("MM DD YYYY"),
+        date: dayjs().format("D MMM YYYY"),
         time: dayjs().format("HH:mm:ss"),
       });
   }

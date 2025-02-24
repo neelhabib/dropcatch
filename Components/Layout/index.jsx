@@ -7,6 +7,7 @@ import APIS from "./List/APIs";
 import Bulk_Whois from "./List/BulkWhois";
 import Auto from "./List/AutoCatch";
 import Generator from "./List/Generator";
+import DomainAuction from "./List/DomainAuction";
 
 // import AdminStat from "./List/AdminStats";
 
@@ -18,6 +19,7 @@ export default function MyLayout() {
         <Layout>
           <Home_Page />
           <APIS />
+          <DomainAuction />
           <AdminCredential />
           <Bulk_Whois />
           <Auto />

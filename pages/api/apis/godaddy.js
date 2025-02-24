@@ -7,6 +7,7 @@ export default async function handler(req, res) {
         const {
           api,
           secret,
+          customerId,
           firstName,
           lastName,
           middleName,
@@ -35,6 +36,7 @@ export default async function handler(req, res) {
                   godaddy: {
                     api,
                     secret,
+                    customerId,
                     firstName,
                     lastName,
                     middleName,

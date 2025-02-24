@@ -29,7 +29,7 @@ async function NameSilo(domain) {
         status: data?.reply?.detail !== "success" ? "Failed" : "success",
         errorStatus: data?.reply?.detail,
         responseCode: data?.reply?.code,
-        date: dayjs().format("MM DD YYYY"),
+        date: dayjs().format("D MMM YYYY"),
         time: dayjs().format("HH:mm:ss"),
       });
   } catch (error) {

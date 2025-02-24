@@ -51,7 +51,7 @@ async function NameCheap(domain) {
               errorStatus: json?.ApiResponse?.Errors?.[0]?.Error?.[0]?._,
               responseCode:
                 json?.ApiResponse?.Errors?.[0]?.Error?.[0]?.$?.Number,
-              date: dayjs().format("MM DD YYYY"),
+              date: dayjs().format("D MMM YYYY"),
               time: dayjs().format("HH:mm:ss"),
             });
         });

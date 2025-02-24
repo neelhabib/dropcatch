@@ -14,6 +14,7 @@ import toast, { Toaster } from "react-hot-toast";
 export default function GodaddyApi() {
   const [api, setApi] = useState("");
   const [secret, setSecret] = useState("");
+  const [customerId, setCustomerId] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [middleName, setMiddleName] = useState("");
@@ -40,6 +41,7 @@ export default function GodaddyApi() {
       .post("/api/apis/godaddy", {
         api,
         secret,
+        customerId,
         firstName,
         lastName,
         middleName,
@@ -74,6 +76,7 @@ export default function GodaddyApi() {
         if (res?.data?.godaddy) {
           setApi(res?.data?.godaddy?.api);
           setSecret(res?.data?.godaddy?.secret);
+          setCustomerId(res?.data?.godaddy?.customerId);
           setFirstName(res?.data?.godaddy?.firstName);
           setLastName(res?.data?.godaddy?.lastName);
           setMiddleName(res?.data?.godaddy?.middleName);
@@ -107,26 +110,41 @@ export default function GodaddyApi() {
         <Chip variant="flat" radius="sm" color={"secondary"}>
           Please enter API and other details.
         </Chip>
-        <Spacer y={2} />
+        <Spacer y={1} />
+        <div className="grid grid-cols-2 gap-2">
+          <Input
+            value={api}
+            onChange={(e) => setApi(e.target.value)}
+            type="text"
+            label="API Key"
+            placeholder="A535djNWJjt_DrfBSPADvpceZtw7mu1hkn"
+          />
+          {/* <Spacer y={2} /> */}
+          <Input
+            value={secret}
+            onChange={(e) => setSecret(e.target.value)}
+            type="text"
+            label="API Secret"
+            placeholder="753LQ7yZ2Hxba4mrZcR9Br"
+          />
+        </div>
+        <Spacer y={4} />
+        <Chip variant="flat" radius="sm" color={"secondary"}>
+          This field only for Google Auction Bidding Only
+        </Chip>
+        <Spacer y={1} />
         <Input
-          value={api}
-          onChange={(e) => setApi(e.target.value)}
+          value={customerId}
+          onChange={(e) => setCustomerId(e.target.value)}
           type="text"
-          label="API Key"
-          placeholder="A535djNWJjt_DrfBSPADvpceZtw7mu1hkn"
-        />
-        <Spacer y={2} />
-        <Input
-          value={secret}
-          onChange={(e) => setSecret(e.target.value)}
-          type="text"
-          label="API Secret"
-          placeholder="753LQ7yZ2Hxba4mrZcR9Br"
+          label="Google Auction Customer Id | For Auction Bidding Only"
+          placeholder="617440553"
         />
         <Spacer y={4} />
         <Chip variant="flat" radius="sm" color={"secondary"}>
           Please enter Contact Information. This is mandetory.
         </Chip>
+        <Spacer y={2} />
         <div className="grid grid-cols-3 gap-3">
           <Input
             value={firstName}

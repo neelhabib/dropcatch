@@ -20,6 +20,7 @@ export default async function handler(req, res) {
         soap.createClient(sedoUrl, function (err, clients) {
           clients.DomainSearch({ args }, function (err, result) {
             err && console.log("err");
+            console.log(err);
             // console.log(result.return.item);
             res.json(result?.return?.item);
           });

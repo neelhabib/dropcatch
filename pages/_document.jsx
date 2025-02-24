@@ -14,7 +14,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          {/* <script src="https://unpkg.com/react-scan/dist/auto.global.js"></script> */}
+          <script src="https://unpkg.com/react-scan/dist/auto.global.js"></script>
           <link
             rel="icon"
             type="image/png"

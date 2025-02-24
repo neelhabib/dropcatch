@@ -21,7 +21,7 @@ const initialState = {
   suggestedDomains: "",
   prefix: "",
   suffix: "",
-  godaddyAuctions: "",
+  godaddyAuctions: [],
   sedoDomains: "",
 };
 
