@@ -1,6 +1,6 @@
 const { default: axios } = require("axios");
 
-async function GodaddyAuctionBidding(socket) {
+async function MultiBidding(socket) {
   socket.onAny((eventName, data) => {
     const {
       domain,
@@ -58,4 +58,4 @@ async function GodaddyAuctionBidding(socket) {
     }
   });
 }
-module.exports = GodaddyAuctionBidding;
+module.exports = MultiBidding;

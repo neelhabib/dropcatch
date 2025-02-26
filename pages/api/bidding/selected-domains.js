@@ -4,7 +4,6 @@ export default async function handler(req, res) {
   try {
     switch (req.method) {
       case "POST": {
-        console.log(req.body.data);
         if (isLoggedIn(req.body?.token)) {
           client
             .db("drop-catch")
@@ -20,6 +19,19 @@ export default async function handler(req, res) {
               res.json("error");
             });
         }
+        break;
+      }
+      case "GET": {
+        const { token } = req.query;
+        if (isLoggedIn(token)) {
+          client
+            .db("drop-catch")
+            .collection("domain-auction")
+            .find()
+            .toArray()
+            .then((doc) => res.json(doc));
+        }
+
         break;
       }
     }

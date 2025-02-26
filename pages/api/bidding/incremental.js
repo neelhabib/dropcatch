@@ -8,6 +8,7 @@ export default async function ManualBidding(req, res) {
     },
     token,
     listingId,
+    bidAmount,
   } = req.body;
 
   const headers = {
@@ -16,7 +17,7 @@ export default async function ManualBidding(req, res) {
 
   const body = [
     {
-      bidAmountUsd: 115000000,
+      bidAmountUsd: Number(bidAmount) * 1_000_000,
       tosAccepted: true,
       listingId: Number(listingId),
     },
@@ -25,22 +26,24 @@ export default async function ManualBidding(req, res) {
     switch (req.method) {
       case "POST":
         if (isLoggedIn(token)) {
-          axios
-            .post(
-              `https://in.godaddy.com/domain-auctions/api/watches/add/616594012/${listingId}`,
-              // body,
-              {
-                headers,
-              }
-            )
-            .then((x) => {
-              console.log(x?.data);
-              res.json("successs");
-            })
-            .catch((err) => {
-              console.log("some error", err);
-              res.json("error");
-            });
+          console.log(Number(bidAmount * 1_000_000));
+          res.json("hello");
+          // axios
+          //   .post(
+          //     `https://api.godaddy.com/v1/customers/${customerId}/aftermarket/listings/bids`,
+          //     body,
+          //     {
+          //       headers,
+          //     }
+          //   )
+          //   .then((x) => {
+          //     console.log(x?.data);
+          //     res.json("successs");
+          //   })
+          //   .catch((err) => {
+          //     console.log("some error", err);
+          //     res.json("error");
+          //   });
           break;
         }
     }

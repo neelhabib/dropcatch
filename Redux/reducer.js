@@ -23,6 +23,8 @@ const initialState = {
   suffix: "",
   godaddyAuctions: [],
   sedoDomains: "",
+  biddingDomains: [],
+  multiBiddingDomains: [],
 };
 
 export const reducer = createSlice({
@@ -141,6 +143,18 @@ export const reducer = createSlice({
     setSedoDomains: (state, action) => {
       state.sedoDomains = action.payload;
     },
+    setBiddingDomains: (state, action) => {
+      state.biddingDomains =
+        action.payload != ""
+          ? [action.payload, ...state.biddingDomains]
+          : action.payload;
+    },
+    setMultiBiddingDomains: (state, action) => {
+      state.multiBiddingDomains =
+        action.payload != ""
+          ? [...state.multiBiddingDomains, action.payload]
+          : action.payload;
+    },
   },
 });
 
@@ -168,5 +182,7 @@ export const {
   setSuggestedDomains,
   setGodaddyAuctions,
   setSedoDomains,
+  setBiddingDomains,
+  setMultiBiddingDomains,
 } = reducer.actions;
 export default reducer.reducer;
