@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import SettingsIcon from "../../icons/sidebar/settings-icon";
+import { FaWandMagicSparkles } from "react-icons/fa6";
 import CollapseItems from "../collapse-items";
 
 export default function Generator() {
@@ -8,7 +8,7 @@ export default function Generator() {
     <>
       <CollapseItems
         isActive={router.asPath.includes("api-setting")}
-        icon={<SettingsIcon />}
+        icon={<FaWandMagicSparkles size={18} color="white" />}
         items={[
           {
             text: "Random Word",

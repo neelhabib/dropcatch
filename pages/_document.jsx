@@ -14,7 +14,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <script src="https://unpkg.com/react-scan/dist/auto.global.js"></script>
+          {/* <script src="https://unpkg.com/react-scan/dist/auto.global.js"></script> */}
           <link
             rel="icon"
             type="image/png"
@@ -23,7 +23,7 @@ class MyDocument extends Document {
           />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cInter:300,400,500,600,700,800,900&amp;display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap"
             rel="stylesheet"
           />
         </Head>

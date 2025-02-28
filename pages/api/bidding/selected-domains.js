@@ -34,6 +34,32 @@ export default async function handler(req, res) {
 
         break;
       }
+      case "DELETE": {
+        const { token } = req.body;
+
+        if (isLoggedIn(token)) {
+          client
+            .db("drop-catch")
+            .collection("domain-auction")
+            .deleteMany({})
+            .then((doc) => {
+              if (doc?.deletedCount > 0) {
+                res.json({
+                  status: true,
+                  message: `Deleted all ${doc?.deletedCount} domains. You need to add domains again.`,
+                });
+              } else {
+                res.json({
+                  status: false,
+                  message: "No Domains were added. Please add some domains.",
+                });
+              }
+            })
+            .catch((err) =>
+              res.json({ status: false, message: "Some error occurred." })
+            );
+        }
+      }
     }
   } catch (err) {
     console.log(err);

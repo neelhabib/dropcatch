@@ -1,26 +1,80 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { socket } from "../../../socket";
 import DomainCard from "./DomainCard";
-import { useDispatch, useSelector } from "react-redux";
-import { setBiddingDomains } from "../../../Redux/reducer";
+// import { setBiddingDomains } from "../../../Redux/reducer";
+// import BiddingTable from "./BiddingTable";
+import { Button, Card, CardBody, Input } from "@nextui-org/react";
+import { useDispatch } from "react-redux";
+import { setMultiBiddingDomains } from "../../../Redux/reducer";
 import BiddingTable from "./BiddingTable";
-import DomainList from "./DomainList";
-
+import EmptyCard from "../SingleBidding/EmptyCard";
 export default function MultiBidding() {
   const [apis, setApis] = useState({});
   const token = JSON.parse(localStorage.getItem("lg_tk"));
-  const [domains, setDomains] = useState([]);
+  const [waitTime, setWaitTime] = useState(5);
+  const [cards, setCards] = useState([]);
+  const [biddingData, setBiddingData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const biddingInterval = useRef(null);
   const dispatch = useDispatch();
-  const multiBiddingDomains = useSelector((state) => state.multiBiddingDomains);
-  useEffect(() => {
-    axios
-      .get("/api/bidding/selected-domains", { params: { token: token?.token } })
-      .then((res) => {
-        console.log(res.data);
-        setDomains(res.data);
+  const handleBid = () => {
+    if (
+      cards?.filter(
+        (x) => !x?.bidAmount || isNaN(x?.bidAmount) || Number(x?.bidAmount) <= 0
+      )?.length > 0
+    ) {
+      console.log("Invalid bid amount");
+      return;
+    }
+    if (biddingInterval.current) {
+      clearInterval(biddingInterval.current);
+    }
+
+    setBiddingData(cards); // Ensure biddingData starts with the latest cards
+    setLoading(true);
+    socket.emit("multi-bidding", { apis, domains: cards }); // Emit immediately with fresh cards
+
+    biddingInterval.current = setInterval(() => {
+      setBiddingData((prevData) => {
+        const updatedData = prevData
+          .map((x) => ({
+            ...x,
+            bidAmount: Number(x.bidAmount) + Number(x.incrementalAmount),
+          }))
+          .filter((x) => x?.bidAmount <= x.maxBidAmount);
+
+        if (updatedData.length === 0) {
+          clearInterval(biddingInterval.current);
+          setLoading(false);
+          biddingInterval.current = null;
+          console.log("Bidding ended: No more items left.");
+        }
+
+        socket.emit("multi-bidding", { apis, domains: updatedData });
+
+        return updatedData;
       });
+    }, waitTime * 1000);
+  };
+
+  const handleStop = () => {
+    clearInterval(biddingInterval.current);
+    setLoading(false);
+  };
+  useEffect(() => {
+    socket.on("multi-bidding", (data) => {
+      console.log(data);
+      dispatch(setMultiBiddingDomains(data));
+    });
+
+    return () => {
+      // Cleanup: Remove all event listeners when unmounting
+      socket.off("multi-bidding");
+      clearInterval(biddingInterval.current);
+    };
   }, []);
+
   useEffect(() => {
     axios
       .get("/api/apis/all", { params: { token: token?.token } })
@@ -29,33 +83,61 @@ export default function MultiBidding() {
         setApis(res.data);
       });
   }, []);
-
   useEffect(() => {
-    const handleSocketEvent = (eventName, data) => {
-      dispatch(setBiddingDomains(data));
-      return eventName;
-    };
-
-    socket.onAny(handleSocketEvent);
-
-    return () => {
-      socket.offAny(handleSocketEvent); // Cleanup when unmounting
-    };
+    axios
+      .get("/api/bidding/selected-domains", { params: { token: token?.token } })
+      .then((res) => {
+        setCards(
+          res.data?.map((x) => ({
+            fqdn: x?.fqdn,
+            end_time: x?.end_time,
+            auction_id: x?.auction_id,
+            bidAmount: "",
+            incrementalAmount: "",
+            maxBidAmount: "",
+          }))
+        );
+      });
   }, []);
   return (
     <div className="m-4">
-      <div className="grid grid-cols-4 gap-3">
-        <div className="grid col-span-3 sm:grid-cols-2 gap-3 bg-primary-100 rounded-lg p-2">
-          {multiBiddingDomains?.map((x, i) => (
-            <DomainCard key={i} domain={x} apis={apis} />
-          ))}
+      {cards?.length > 0 ? (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 bg-blue-100 rounded-lg p-2">
+          <DomainCard cards={cards} setCards={setCards} />
+          <div className="col-span-2">
+            <Card>
+              <CardBody>
+                <div className="flex justify-between items-center gap-4">
+                  <Button
+                    isLoading={loading}
+                    className="px-8"
+                    color="secondary"
+                    onClick={handleBid}
+                  >
+                    Bid Now
+                  </Button>
+                  <Input
+                    variant="bordered"
+                    color="secondary"
+                    classNames={{ inputWrapper: "border-1" }}
+                    className="max-w-xs"
+                    value={waitTime}
+                    onChange={(e) => setWaitTime(e.target.value)}
+                    label="Interval Seconds"
+                    size="sm"
+                    type="number"
+                  />
+                  <Button onClick={handleStop} className="px-8" color="warning">
+                    Stop Now
+                  </Button>
+                </div>
+              </CardBody>
+            </Card>
+          </div>
         </div>
-        <div className="bg-slate-200 p-2 rounded-lg flex flex-col gap-2">
-          {domains?.map((x, i) => (
-            <DomainList key={i} domain={x} />
-          ))}
-        </div>
-      </div>
+      ) : (
+        <EmptyCard />
+      )}
 
       <div className="my-4">
         <BiddingTable />

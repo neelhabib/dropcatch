@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import SidebarItem from "../sidebar-item";
-import SettingsIcon from "../../icons/sidebar/settings-icon";
+import { GiFallingBoulder } from "react-icons/gi";
 export default function HomePage() {
   const router = useRouter();
   return (
@@ -9,7 +9,7 @@ export default function HomePage() {
         isActive={router.asPath === "/"}
         title="Drop Catch"
         href="/"
-        icon={<SettingsIcon />}
+        icon={<GiFallingBoulder size={17} color="white" />}
       />
     </>
   );

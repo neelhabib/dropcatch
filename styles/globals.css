@@ -8,8 +8,13 @@ html,
   margin: 0;
   font-family: "Inter", sans-serif;
 } */
+body {
+  font-family: "Outfit", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
 a {
-  font-family: "Inter", sans-serif;
+  font-family: "Outfit", serif;
 }
 * {
   box-sizing: border-box;

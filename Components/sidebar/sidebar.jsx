@@ -12,9 +12,10 @@ import APIs from "./List/APIs";
 import Whois from "./List/Whois";
 import AutoCatch from "./List/AutoCatch";
 import Generator from "./List/Generator";
-import ManualBidding from "./List/ManualBidding";
+import SingleBidding from "./List/SingleBidding";
 import AuctionSearch from "./List/AuctionSearch";
 import MultiBidding from "./List/MultiBidding";
+import ManualBidding from "./List/ManualBidding";
 export default function SidebarWrapper() {
   const router = useRouter();
   const { collapsed, setCollapsed } = useSidebarContext();
@@ -54,8 +55,9 @@ export default function SidebarWrapper() {
             </SidebarMenu>
             <SidebarMenu title="Auction Bidding">
               <AuctionSearch />
-              <ManualBidding />
+              <SingleBidding />
               <MultiBidding />
+              <ManualBidding />
             </SidebarMenu>
             <SidebarMenu title="Domain Tools">
               <Generator />

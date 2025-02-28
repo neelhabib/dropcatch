@@ -9,6 +9,8 @@ const NameSiloDropCatch = require("./SocketFunction/DropCatch/NameSilo");
 const SpaceShipDropCatch = require("./SocketFunction/DropCatch/SpaceShip");
 const AutoCatchInterval = require("./SocketFunction/AutoCatch");
 const GodaddyAuctionBidding = require("./SocketFunction/Bidding/Godaddy");
+const MultiBidding = require("./SocketFunction/Bidding/MultiBidding");
+const ManualBidding = require("./SocketFunction/Bidding/ManualBidding");
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -45,6 +47,8 @@ const createServer = async () => {
 
     GodaddyAuctionBidding(socket);
 
+    MultiBidding(socket);
+    ManualBidding(socket);
     socket.on("godaddy-dropcatch", (domain) =>
       GodaddyDropCatch(socket, domain)
     );

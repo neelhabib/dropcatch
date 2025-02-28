@@ -35,7 +35,7 @@ export default function DomainTable() {
             duration: 3000,
           }
         );
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((err) => {
         console.log(err);

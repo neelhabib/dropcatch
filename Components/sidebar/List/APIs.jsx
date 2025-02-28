@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import SettingsIcon from "../../icons/sidebar/settings-icon";
+import { MdDataObject } from "react-icons/md";
 import CollapseItems from "../collapse-items";
 
 export default function APIs() {
@@ -8,7 +8,7 @@ export default function APIs() {
     <>
       <CollapseItems
         isActive={router.asPath.includes("api-setting")}
-        icon={<SettingsIcon />}
+        icon={<MdDataObject size={20} color="white" />}
         items={[
           {
             text: "Godaddy",

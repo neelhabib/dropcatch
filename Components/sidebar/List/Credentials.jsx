@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import SidebarItem from "../sidebar-item";
-import SettingsIcon from "../../icons/sidebar/settings-icon";
+import { TbLockPassword } from "react-icons/tb";
 export default function Credentials() {
   const router = useRouter();
   return (
@@ -9,7 +9,7 @@ export default function Credentials() {
         isActive={router.asPath === "/admin/credentials"}
         title="Credentials"
         href="/admin/credentials"
-        icon={<SettingsIcon />}
+        icon={<TbLockPassword size={20} color="white" />}
       />
     </>
   );

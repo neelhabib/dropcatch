@@ -1,7 +1,7 @@
 const axios = require("axios");
 
-async function MultiBidding(socket) {
-  socket.on("multi-bidding", ({ apis, domains }) => {
+async function ManualBidding(socket) {
+  socket.on("manual-bidding", ({ apis, domains }) => {
     if (domains?.length > 0) {
       const {
         godaddy: { api, secret, customerId },
@@ -35,7 +35,7 @@ async function MultiBidding(socket) {
             status: x?.status,
             bidFailureReason: x?.bidFailureReason,
           }));
-          socket.emit("multi-bidding", results);
+          socket.emit("manual-bidding", results);
         })
         .catch((err) => {
           // console.log("some error", err?.response?.data);
@@ -53,4 +53,4 @@ async function MultiBidding(socket) {
     }
   });
 }
-module.exports = MultiBidding;
+module.exports = ManualBidding;

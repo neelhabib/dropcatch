@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import SidebarItem from "../sidebar-item";
-import SettingsIcon from "../../icons/sidebar/settings-icon";
+import { TbListSearch } from "react-icons/tb";
+
 export default function AuctionSearch() {
   const router = useRouter();
   return (
@@ -9,7 +10,7 @@ export default function AuctionSearch() {
         isActive={router.asPath === "/admin/bidding-search"}
         title="Auction Search"
         href="/admin/bidding-search"
-        icon={<SettingsIcon />}
+        icon={<TbListSearch color="white" size={20} />}
       />
     </>
   );

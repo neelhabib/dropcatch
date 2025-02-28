@@ -1,9 +1,13 @@
 import { Button, Chip } from "@nextui-org/react";
 import { useDispatch, useSelector } from "react-redux";
-import SimpleBarReact from "simplebar-react";
-import { setBiddingDomains } from "../../../Redux/reducer";
+import {
+  setManualBiddingDomains,
+  setMultiBiddingDomains,
+} from "../../../Redux/reducer";
 export default function BiddingTable() {
-  const biddingDomains = useSelector((state) => state.biddingDomains);
+  const manualBiddingDomains = useSelector(
+    (state) => state.manualBiddingDomains
+  );
   const dispatch = useDispatch();
   const header = [
     "#",
@@ -30,22 +34,22 @@ export default function BiddingTable() {
   };
   return (
     <>
-      {biddingDomains?.length > 0 && (
+      {manualBiddingDomains?.length > 0 && (
         <div className="max-h-72 overflow-auto border border-gray-100 dark:border-gray-600 shadow-sm rounded-lg ">
           <div className="mx-6 py-2 grid gap-3 md:flex md:justify-between md:items-center sticky">
             <div className="flex justify-between items-center gap-2 w-full">
               <div>
                 <span className="text-sm mr-2">API Queries </span>
-                {biddingDomains && (
+                {manualBiddingDomains && (
                   <Chip color="success" size="sm" radius="sm" variant="flat">
-                    {biddingDomains?.length}
+                    {manualBiddingDomains?.length}
                   </Chip>
                 )}
               </div>
               <Button
                 size="sm"
                 color="warning"
-                onClick={() => dispatch(setBiddingDomains([]))}
+                onClick={() => dispatch(setManualBiddingDomains([]))}
               >
                 Delete Queries
               </Button>
@@ -70,7 +74,7 @@ export default function BiddingTable() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {biddingDomains
+              {manualBiddingDomains
                 .filter((y) => y)
                 .map((x, i, arr) => (
                   <tr key={i} className="rounded-3 bg- m-2">

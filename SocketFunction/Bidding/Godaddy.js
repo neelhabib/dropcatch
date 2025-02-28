@@ -2,28 +2,27 @@ const { default: axios } = require("axios");
 
 async function GodaddyAuctionBidding(socket) {
   socket.onAny((eventName, data) => {
-    const {
-      domain,
-      listingId,
-      bidAmount,
-      apis: {
-        godaddy: { api, secret, customerId },
-      },
-    } = data;
-    // Headers
-    const headers = {
-      Authorization: `sso-key ${api}:${secret}`,
-    };
-    // Bidding body
-    const body = [
-      {
-        bidAmountUsd: Number(bidAmount) * 1_000_000,
-        tosAccepted: true,
-        listingId: Number(listingId),
-      },
-    ];
-
     if (eventName == data?.listingId) {
+      const {
+        domain,
+        listingId,
+        bidAmount,
+        apis: {
+          godaddy: { api, secret, customerId },
+        },
+      } = data;
+      // Headers
+      const headers = {
+        Authorization: `sso-key ${api}:${secret}`,
+      };
+      // Bidding body
+      const body = [
+        {
+          bidAmountUsd: Number(bidAmount) * 1_000_000,
+          tosAccepted: true,
+          listingId: Number(listingId),
+        },
+      ];
       axios
         .post(
           `https://api.godaddy.com/v1/customers/${customerId}/aftermarket/listings/bids`,

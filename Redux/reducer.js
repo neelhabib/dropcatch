@@ -25,6 +25,7 @@ const initialState = {
   sedoDomains: "",
   biddingDomains: [],
   multiBiddingDomains: [],
+  manualBiddingDomains: [],
 };
 
 export const reducer = createSlice({
@@ -152,7 +153,13 @@ export const reducer = createSlice({
     setMultiBiddingDomains: (state, action) => {
       state.multiBiddingDomains =
         action.payload != ""
-          ? [...state.multiBiddingDomains, action.payload]
+          ? [...action.payload, ...state.multiBiddingDomains]
+          : action.payload;
+    },
+    setManualBiddingDomains: (state, action) => {
+      state.manualBiddingDomains =
+        action.payload != ""
+          ? [...action.payload, ...state.manualBiddingDomains]
           : action.payload;
     },
   },
@@ -184,5 +191,6 @@ export const {
   setSedoDomains,
   setBiddingDomains,
   setMultiBiddingDomains,
+  setManualBiddingDomains,
 } = reducer.actions;
 export default reducer.reducer;
