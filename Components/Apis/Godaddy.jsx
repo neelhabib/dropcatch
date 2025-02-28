@@ -15,6 +15,7 @@ export default function GodaddyApi() {
   const [api, setApi] = useState("");
   const [secret, setSecret] = useState("");
   const [customerId, setCustomerId] = useState("");
+  const [shopperId, setShopperId] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [middleName, setMiddleName] = useState("");
@@ -68,6 +69,23 @@ export default function GodaddyApi() {
       });
   };
 
+  const getCustomerId = () => {
+    axios
+      .delete("/api/apis/godaddy", {
+        data: { token: token.token, api, secret, shopperId },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setCustomerId(res.data?.customerId);
+        toast.success("");
+      })
+      .catch((err) => {
+        toast.error(
+          "Some error occurred. Please enter api and secret or try again."
+        );
+      });
+  };
+
   // this is to get the ads settings from the server
   useEffect(() => {
     axios
@@ -77,6 +95,7 @@ export default function GodaddyApi() {
           setApi(res?.data?.godaddy?.api);
           setSecret(res?.data?.godaddy?.secret);
           setCustomerId(res?.data?.godaddy?.customerId);
+          setShopperId(res?.data?.godaddy?.shopperId);
           setFirstName(res?.data?.godaddy?.firstName);
           setLastName(res?.data?.godaddy?.lastName);
           setMiddleName(res?.data?.godaddy?.middleName);
@@ -129,9 +148,27 @@ export default function GodaddyApi() {
           />
         </div>
         <Spacer y={4} />
-        <Chip variant="flat" radius="sm" color={"secondary"}>
-          This field only for Google Auction Bidding Only
-        </Chip>
+        <div className="flex items-center gap-4">
+          <Chip variant="flat" radius="sm" color={"secondary"}>
+            This field only for Google Auction Bidding Only
+          </Chip>
+          <Button
+            className="!py-0"
+            size="sm"
+            color="primary"
+            onClick={getCustomerId}
+          >
+            Get Customer ID
+          </Button>
+        </div>
+        <Spacer y={1} />
+        <Input
+          value={shopperId}
+          onChange={(e) => setShopperId(e.target.value)}
+          type="text"
+          label="Enter Shopper ID to get Customer ID"
+          placeholder="617440553"
+        />
         <Spacer y={1} />
         <Input
           value={customerId}

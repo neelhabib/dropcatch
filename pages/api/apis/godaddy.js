@@ -1,3 +1,4 @@
+import axios from "axios";
 import { client } from "../../../db";
 import isLoggedIn from "../isLoggedIn";
 export default async function handler(req, res) {
@@ -79,6 +80,29 @@ export default async function handler(req, res) {
             .collection("apis")
             .findOne({}, { projection: { godaddy: 1 } })
             .then((doc) => res.json(doc));
+        }
+        break;
+      }
+      case "DELETE": {
+        const { token, api, secret, shopperId } = req?.body;
+
+        if (isLoggedIn(token)) {
+          const headers = {
+            Authorization: `sso-key ${api}:${secret}`,
+          };
+          axios
+            .get(
+              `https://api.godaddy.com/v1/shoppers/${shopperId}?includes=customerId`,
+
+              {
+                headers,
+              }
+            )
+            .then((x) => res.json(x.data))
+            .catch((err) => {
+              res.json("error", res.status(401).json(err.response?.data));
+              // console.log(err.response.data);
+            });
         }
         break;
       }
