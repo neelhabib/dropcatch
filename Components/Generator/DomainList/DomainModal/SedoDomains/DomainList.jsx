@@ -1,4 +1,4 @@
-import { Card, CardHeader, Link } from "@nextui-org/react";
+import { Card, CardHeader, Link } from "@heroui/react";
 import DropDownLeft from "./DropDownLeft";
 import Skeleton from "../../Skeleton";
 const data = [1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 12, 14, 15];

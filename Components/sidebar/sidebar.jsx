@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "./sidebar.styles";
-import { Image, Link } from "@nextui-org/react";
+import { Image, Link } from "@heroui/react";
 import HomeIcon from "../icons/sidebar/home-icon";
 import SidebarItem from "./sidebar-item";
 import SidebarMenu from "./sidebar-menu";

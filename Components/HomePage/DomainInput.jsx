@@ -1,4 +1,4 @@
-import { Button, Chip, Input, Spinner, Textarea } from "@nextui-org/react";
+import { Button, Chip, Input, Spinner, Textarea } from "@heroui/react";
 import { useEffect, useState } from "react";
 
 import { useDispatch } from "react-redux";
@@ -56,7 +56,6 @@ export default function DomainInput({
     .filter((x) => x);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     setLoading(true);
 
     if (nameCheap) dispatch(setNameCheapWhois(""));
@@ -173,7 +172,7 @@ export default function DomainInput({
           {data?.length}
         </Chip>
       </div>
-      <div className="flex justify-between items-end gap-2 my-2">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-2 my-2">
         <div>
           <p className="text-xs text-gray-600">Wait time (Milliseconds)</p>
           <Input
@@ -186,12 +185,14 @@ export default function DomainInput({
             step={500}
           />
         </div>
-        <Button onClick={handleSubmit} color="primary" isLoading={loading}>
-          Check
-        </Button>
-        <Button color="danger" onClick={handleStop}>
-          Stop
-        </Button>
+        <div className="flex justify-between gap-2">
+          <Button onClick={handleSubmit} color="primary" isLoading={loading}>
+            Check
+          </Button>
+          <Button color="danger" onClick={handleStop}>
+            Stop
+          </Button>
+        </div>
       </div>
     </form>
   );

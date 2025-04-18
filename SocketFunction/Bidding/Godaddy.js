@@ -25,7 +25,7 @@ async function GodaddyAuctionBidding(socket) {
       ];
       axios
         .post(
-          `https://api.godaddy.com/v1/customers/${customerId}/aftermarket/listings/bids`,
+          `https://api.ote-godaddy.com/v1/customers/${customerId}/aftermarket/listings/bids`,
           body,
           {
             headers,
@@ -44,7 +44,7 @@ async function GodaddyAuctionBidding(socket) {
           });
         })
         .catch((err) => {
-          console.log("some error", err?.response?.data);
+          // console.log("some error", err?.response?.data);
           socket.emit(`${listingId}`, {
             domain,
             listingId,

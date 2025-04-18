@@ -1,4 +1,4 @@
-import { Card, CardBody, Input } from "@nextui-org/react";
+import { Card, CardBody, Input } from "@heroui/react";
 import { Toaster } from "react-hot-toast";
 import CountdownTimer from "./CountdownTimer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -33,7 +33,7 @@ export default function DomainCard({ cards, setCards }) {
   return (
     <>
       {cards?.map((card, index) => (
-        <Card>
+        <Card key={index}>
           <CardBody className="flex flex-col gap-3">
             <div className="flex justify-between">
               <p>{card?.fqdn}</p>

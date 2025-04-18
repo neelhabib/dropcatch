@@ -20,7 +20,7 @@ import {
   Input,
   Spacer,
   Textarea,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleChevronDown } from "@fortawesome/free-solid-svg-icons";
 import winkNLP from "wink-nlp";

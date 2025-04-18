@@ -9,7 +9,7 @@ import {
   Tab,
   Card,
   Link,
-} from "@nextui-org/react";
+} from "@heroui/react";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";

@@ -7,7 +7,7 @@ import {
   TableRow,
   TableCell,
   Link,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { useSelector } from "react-redux";
 import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";

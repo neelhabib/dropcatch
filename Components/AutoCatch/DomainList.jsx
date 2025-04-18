@@ -1,4 +1,4 @@
-import { Chip } from "@nextui-org/react";
+import { Chip } from "@heroui/react";
 import dayjs from "dayjs";
 export default function DomainList({ whoisData }) {
   const headers = [
@@ -67,69 +67,66 @@ export default function DomainList({ whoisData }) {
                 <tbody className="divide-y divide-gray-200">
                   {whoisData &&
                     whoisData?.map((x, i) => (
-                      <>
-                        <tr key={i}>
-                          <Rows item={i + 1} />
-                          <Rows
-                            item={
-                              x["Domain Name"]?.toLowerCase() ||
-                              x["Domain name"]
-                            }
-                          />
-                          <Rows
-                            item={
-                              x["Domain Status"]?.split(" ")?.[0] || "Dropped"
-                            }
-                          />
-                          <Rows
-                            item={x?.[">>> Last update of whois database"]
-                              ?.split("<<<")?.[0]
-                              ?.trim()}
-                          />
-                          <Rows
-                            item={
-                              x["Creation Date"]
-                                ? dayjs().$y -
-                                  dayjs(x["Creation Date"].slice(0, 10)).$y +
-                                  " yrs"
-                                : x["Registered on"]
-                                ? dayjs().$y -
-                                  dayjs(x["Registered on"]).$y +
-                                  " yrs"
-                                : "N/A"
-                            }
-                          />
-                          <Rows
-                            item={
-                              x["Creation Date"]?.slice(0, 10) ||
-                              x["Registered on"] ||
-                              "N/A"
-                            }
-                          />
-                          <Rows
-                            item={
-                              x["Registry Expiry Date"]?.slice(0, 10) ||
-                              x["Expiry date"] ||
-                              "N/A"
-                            }
-                          />
-                          <Rows
-                            item={
-                              x["Updated Date"]?.slice(0, 10) ||
-                              x["Last updated"] ||
-                              "N/A"
-                            }
-                          />
-                          <Rows item={x["Registrar"]} />
-                          <Rows
-                            item={
-                              x["Name Server"]?.toLowerCase() ||
-                              x["Name servers"]?.toLowerCase() ||
-                              "N/A"
-                            }
-                          />
-                        </tr>
-                      </>
+                      <tr key={i}>
+                        <Rows item={i + 1} />
+                        <Rows
+                          item={
+                            x["Domain Name"]?.toLowerCase() || x["Domain name"]
+                          }
+                        />
+                        <Rows
+                          item={
+                            x["Domain Status"]?.split(" ")?.[0] || "Dropped"
+                          }
+                        />
+                        <Rows
+                          item={x?.[">>> Last update of whois database"]
+                            ?.split("<<<")?.[0]
+                            ?.trim()}
+                        />
+                        <Rows
+                          item={
+                            x["Creation Date"]
+                              ? dayjs().$y -
+                                dayjs(x["Creation Date"].slice(0, 10)).$y +
+                                " yrs"
+                              : x["Registered on"]
+                              ? dayjs().$y -
+                                dayjs(x["Registered on"]).$y +
+                                " yrs"
+                              : "N/A"
+                          }
+                        />
+                        <Rows
+                          item={
+                            x["Creation Date"]?.slice(0, 10) ||
+                            x["Registered on"] ||
+                            "N/A"
+                          }
+                        />
+                        <Rows
+                          item={
+                            x["Registry Expiry Date"]?.slice(0, 10) ||
+                            x["Expiry date"] ||
+                            "N/A"
+                          }
+                        />
+                        <Rows
+                          item={
+                            x["Updated Date"]?.slice(0, 10) ||
+                            x["Last updated"] ||
+                            "N/A"
+                          }
+                        />
+                        <Rows item={x["Registrar"]} />
+                        <Rows
+                          item={
+                            x["Name Server"]?.toLowerCase() ||
+                            x["Name servers"]?.toLowerCase() ||
+                            "N/A"
+                          }
+                        />
+                      </tr>
                     ))}
                 </tbody>
               </table>

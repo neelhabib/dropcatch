@@ -1,4 +1,4 @@
-import { Chip } from "@nextui-org/react";
+import { Chip } from "@heroui/react";
 import SimpleBarReact from "simplebar-react";
 export default function Content({ title, catchedInfo }) {
   const header = ["#", "Domain", "Status", "Error Code", "Response Code"];

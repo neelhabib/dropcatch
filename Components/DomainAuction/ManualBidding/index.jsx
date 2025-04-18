@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { socket } from "../../../socket";
 import DomainCard from "./DomainCard";
-import { Button, Card, CardBody, Input } from "@nextui-org/react";
+import { addToast, Button, Card, CardBody } from "@heroui/react";
 import { useDispatch } from "react-redux";
 import { setManualBiddingDomains } from "../../../Redux/reducer";
 import BiddingTable from "./BiddingTable";
@@ -22,6 +22,12 @@ export default function ManualBidding() {
       )?.length > 0
     ) {
       console.log("Invalid bid amount");
+      addToast({
+        title: "Invalid bid amount",
+        variant: "bordered",
+        color: "danger",
+        timeout: 3000,
+      });
       return;
     }
 
@@ -69,9 +75,11 @@ export default function ManualBidding() {
   return (
     <div className="m-4">
       {cards?.length > 0 ? (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 items-end bg-blue-100 rounded-lg p-2">
-          <DomainCard cards={cards} setCards={setCards} />
-          <div className="col-span-2">
+        <div className="bg-blue-100 rounded-lg p-2">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 items-end ">
+            <DomainCard cards={cards} setCards={setCards} />
+          </div>
+          <div className="col-span-2 mt-3">
             <Card>
               <CardBody>
                 <div className="flex justify-between items-center gap-4">
@@ -79,7 +87,7 @@ export default function ManualBidding() {
                     isLoading={loading}
                     className="px-8"
                     color="secondary"
-                    onClick={handleBid}
+                    onPress={handleBid}
                   >
                     Bid Now
                   </Button>

@@ -1,4 +1,4 @@
-import { Card, Tab, Tabs } from "@nextui-org/react";
+import { Card, Tab, Tabs } from "@heroui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import DomainInput from "./DomainInput";
@@ -64,7 +64,7 @@ export default function HomePage() {
           }
         >
           <div className="m-4">
-            <div className="grid grid-cols-12 gap-2">
+            <div className="grid sm:grid-cols-12 gap-2">
               <div className="col-span-4">
                 <DomainInput
                   godaddy
@@ -94,7 +94,7 @@ export default function HomePage() {
           }
         >
           <div className="m-4">
-            <div className="grid grid-cols-12 gap-2">
+            <div className="grid sm:grid-cols-12 gap-2">
               <div className="col-span-4">
                 <DomainInput
                   nameCheap
@@ -123,7 +123,7 @@ export default function HomePage() {
           }
         >
           <div className="m-4">
-            <div className="grid grid-cols-12 gap-2">
+            <div className="grid sm:grid-cols-12 gap-2">
               <div className="col-span-4">
                 <DomainInput
                   dynadot
@@ -152,7 +152,7 @@ export default function HomePage() {
           }
         >
           <div className="m-4">
-            <div className="grid grid-cols-12 gap-2">
+            <div className="grid sm:grid-cols-12 gap-2">
               <div className="col-span-4">
                 <DomainInput
                   nameSilo

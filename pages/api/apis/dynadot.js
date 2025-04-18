@@ -39,7 +39,7 @@ export default async function handler(req, res) {
       }
     }
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     res.json("Error, Please try again.");
   }
 }

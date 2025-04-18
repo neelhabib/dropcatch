@@ -9,7 +9,7 @@ import {
   Link,
   Navbar,
   NavbarItem,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import React from "react";
 import DarkModeSwitch from "./darkmodeswitch";
 import { useDispatch } from "react-redux";
@@ -55,6 +55,8 @@ export default function UserDropdown() {
           </DropdownItem>
         </DropdownSection>
         <DropdownItem
+          disabled
+          isDisabled
           key="configurations"
           as={NextLink}
           href="/admin/credentials"
@@ -70,9 +72,7 @@ export default function UserDropdown() {
         >
           Log Out
         </DropdownItem>
-        <DropdownItem key="switch">
-          <DarkModeSwitch />
-        </DropdownItem>
+        <DropdownItem key="switch">{/* <DarkModeSwitch /> */}</DropdownItem>
       </DropdownMenu>
     </Dropdown>
   );

@@ -25,11 +25,11 @@ export default function Generator() {
             link: "/admin/bulk-domain-generator",
             bold: router.query.route === "bulk-domain-generator",
           },
-          {
-            text: "Domain GPT",
-            link: "/admin/gpt-based-domain-name",
-            bold: router.query.route === "gpt-based-domain-name",
-          },
+          // {
+          //   text: "Domain GPT",
+          //   link: "/admin/gpt-based-domain-name",
+          //   bold: router.query.route === "gpt-based-domain-name",
+          // },
 
           {
             text: "Domain AI",

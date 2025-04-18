@@ -64,7 +64,7 @@ export default async function handler(req, res) {
             },
           ]);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => err);
     } else {
       const data = await axios
         .get("https://sugapi.verisign-grs.com/ns-api/2.0/bulk-check?", {

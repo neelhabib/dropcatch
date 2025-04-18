@@ -7,7 +7,7 @@ import {
   Input,
   Spinner,
   Textarea,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
@@ -74,14 +74,14 @@ export default function DomainInput() {
     <>
       <Toaster />
       <div>
-        <div className="mb-1 flex justify-start gap-4">
+        <div className="mb-1 flex flex-col sm:flex-row justify-start gap-4">
           <Textarea
             label="List of Domains | one domain per line"
             value={domains}
             onChange={(e) => setDomains(e.target.value)}
             placeholder={`example.com\nbestdomain.com`}
             required
-            className="w-[50%]"
+            className="w-full sm:w-[50%]"
             minRows={10}
           />
           <div className="flex flex-col gap-6">

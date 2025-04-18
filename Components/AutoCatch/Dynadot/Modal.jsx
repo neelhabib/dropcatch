@@ -5,15 +5,9 @@ import {
   ModalBody,
   ModalFooter,
   Button,
-  Table,
-  TableHeader,
-  TableColumn,
-  TableRow,
-  TableCell,
-  TableBody,
   Pagination,
   Divider,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { useState } from "react";
 
 const headers = [
@@ -79,17 +73,15 @@ export default function Modals({ data, isOpen, onOpenChange }) {
                 </thead>
                 <tbody className="divide-y divide-gray-200">
                   {data?.slice((page - 1) * 20, page * 20).map((x, i) => (
-                    <>
-                      <tr key={i}>
-                        <Rows item={x?.api} />
-                        <Rows item={x?.domain} />
-                        <Rows item={x?.date} />
-                        <Rows item={x?.time} />
-                        <Rows item={x?.status} />
-                        <Rows item={x?.errorStatus} />
-                        <Rows item={x?.responseCode} />
-                      </tr>
-                    </>
+                    <tr key={i}>
+                      <Rows item={x?.api} />
+                      <Rows item={x?.domain} />
+                      <Rows item={x?.date} />
+                      <Rows item={x?.time} />
+                      <Rows item={x?.status} />
+                      <Rows item={x?.errorStatus} />
+                      <Rows item={x?.responseCode} />
+                    </tr>
                   ))}
                 </tbody>
               </table>

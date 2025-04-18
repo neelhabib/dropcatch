@@ -1,4 +1,4 @@
-import { Navbar, NavbarContent } from "@nextui-org/react";
+import { Navbar, NavbarContent } from "@heroui/react";
 import React from "react";
 import BurguerButton from "./burguer-button";
 import UserDropdown from "./user-dropdown";

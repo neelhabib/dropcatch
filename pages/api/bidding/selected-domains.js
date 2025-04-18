@@ -15,7 +15,7 @@ export default async function handler(req, res) {
             )
             .then((doc) => res.json(doc))
             .catch((err) => {
-              console.log(err);
+              // console.log(err);
               res.json("error");
             });
         }
@@ -62,7 +62,7 @@ export default async function handler(req, res) {
       }
     }
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     res.json("Error, Please try again.");
   }
 }

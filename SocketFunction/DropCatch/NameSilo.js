@@ -49,10 +49,10 @@ async function NameSiloDropCatch(socket, data) {
             socket.emit("namesilo-dropcatch", { whois: res, domain });
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => err);
     }
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 }
 

@@ -1,4 +1,4 @@
-import { Card, CardHeader, Chip, Link, useDisclosure } from "@nextui-org/react";
+import { Card, CardHeader, Chip, Link, useDisclosure } from "@heroui/react";
 import DropDownLeft from "./DropDownLeft";
 import DropDownRight from "./DropDownRight";
 import { useState } from "react";

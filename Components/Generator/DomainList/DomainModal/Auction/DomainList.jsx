@@ -1,4 +1,4 @@
-import { Card, CardHeader, Link } from "@nextui-org/react";
+import { Card, CardHeader, Link } from "@heroui/react";
 import DropDownLeft from "./DropDownLeft";
 import Skeleton from "../../Skeleton";
 import { useSelector } from "react-redux";

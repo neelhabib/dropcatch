@@ -1,4 +1,4 @@
-import { Button, Input, Progress } from "@nextui-org/react";
+import { Button, Input, Progress } from "@heroui/react";
 import axios from "axios";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -29,7 +29,6 @@ export default function SearchBar() {
       });
   };
   const handleDelete = (e) => {
-    e.preventDefault();
     setLoading2(true);
 
     axios
@@ -61,7 +60,7 @@ export default function SearchBar() {
             className="max-w-xl"
             placeholder="Search auction Domain and press enter"
           />
-          <Button color="warning" onClick={handleDelete} isLoading={loading2}>
+          <Button color="warning" onPress={handleDelete} isLoading={loading2}>
             Delete Added Domains
           </Button>
         </div>

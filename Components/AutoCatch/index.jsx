@@ -1,4 +1,4 @@
-import { Button, Card, Image, Tab, Tabs } from "@nextui-org/react";
+import { Button, Card, Image, Tab, Tabs } from "@heroui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import DomainInput from "./DomainInput";
@@ -9,6 +9,7 @@ import QueryCard from "./Dynadot/Queries";
 import Dynadot from "./Icons/Dynadot";
 import NameSilo from "./Icons/NameSilo";
 import NameCheap from "./Icons/NameCheap";
+import DeleteQueries from "./DeleteQueries";
 
 export default function AutoCatch() {
   const token = JSON.parse(localStorage.getItem("lg_tk"));
@@ -23,9 +24,8 @@ export default function AutoCatch() {
     axios
       .get("/api/auto-catch/api-queries", { params: { token: token?.token } })
       .then((res) => {
-        console.log(res.data?.reverse());
-        setQueries(res.data?.reverse());
-        dispatch(setApiQueries(res.data.reverse()));
+        setQueries(res.data);
+        dispatch(setApiQueries(res.data));
       });
   }, []);
   const cornerImg_2 = `${window.location.origin}/images/corner-2.png`;
@@ -92,14 +92,7 @@ export default function AutoCatch() {
           </div>
         </Tab>
         <Tab key="Delete" title="Delete">
-          <div className="flex flex-col items-center justify-center">
-            <Button isDisabled color="danger" size="lg" className="mt-4">
-              Delete Old Queries
-            </Button>
-            <p className="mt-2 text-sm">
-              Currently not available to delete old queries.
-            </p>
-          </div>
+          <DeleteQueries />
         </Tab>
       </Tabs>
     </Card>

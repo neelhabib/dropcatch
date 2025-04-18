@@ -1,4 +1,4 @@
-import { Chip } from "@nextui-org/react";
+import { Chip } from "@heroui/react";
 import dayjs from "dayjs";
 export default function DomainList({ whoisData }) {
   const headers = [
@@ -67,78 +67,70 @@ export default function DomainList({ whoisData }) {
                 <tbody className="divide-y divide-gray-200">
                   {whoisData &&
                     whoisData?.map((x, i) => (
-                      <>
-                        <tr key={i}>
-                          <Rows item={i + 1} />
-                          <Rows
-                            item={
-                              x?.whois?.["Domain Name"]?.toLowerCase() ||
-                              x?.whois?.["Domain name"] ||
-                              x?.domain
-                            }
-                          />
-                          <Rows
-                            item={
-                              x?.whois?.["Domain Status"]?.split(" ")?.[0] ||
-                              "Dropped"
-                            }
-                          />
-                          <Rows
-                            item={x?.whois?.[
-                              ">>> Last update of whois database"
-                            ]
-                              ?.split("<<<")?.[0]
-                              ?.trim()}
-                          />
-                          <Rows
-                            item={
-                              x?.whois?.["Creation Date"]
-                                ? dayjs().$y -
-                                  dayjs(
-                                    x?.whois?.["Creation Date"].slice(0, 10)
-                                  ).$y +
-                                  " yrs"
-                                : x?.whois?.["Registered on"]
-                                ? dayjs().$y -
-                                  dayjs(x?.whois?.["Registered on"]).$y +
-                                  " yrs"
-                                : "N/A"
-                            }
-                          />
-                          <Rows
-                            item={
-                              x?.whois?.["Creation Date"]?.slice(0, 10) ||
-                              x?.whois?.["Registered on"] ||
-                              "N/A"
-                            }
-                          />
-                          <Rows
-                            item={
-                              x?.whois?.["Registry Expiry Date"]?.slice(
-                                0,
-                                10
-                              ) ||
-                              x?.whois?.["Expiry date"] ||
-                              "N/A"
-                            }
-                          />
-                          <Rows
-                            item={
-                              x?.whois?.["Updated Date"]?.slice(0, 10) ||
-                              x?.whois?.["Last updated"] ||
-                              "N/A"
-                            }
-                          />
-                          <Rows item={x?.whois?.["Registrar"]} />
-                          <Rows
-                            item={
-                              x?.whois?.["Name Server"]?.toLowerCase() ||
-                              x?.whois?.["Name servers"]?.toLowerCase() ||
-                              "N/A"
-                            }
-                          />
-                        </tr>
-                      </>
+                      <tr key={i}>
+                        <Rows item={i + 1} />
+                        <Rows
+                          item={
+                            x?.whois?.["Domain Name"]?.toLowerCase() ||
+                            x?.whois?.["Domain name"] ||
+                            x?.domain
+                          }
+                        />
+                        <Rows
+                          item={
+                            x?.whois?.["Domain Status"]?.split(" ")?.[0] ||
+                            "Dropped"
+                          }
+                        />
+                        <Rows
+                          item={x?.whois?.[">>> Last update of whois database"]
+                            ?.split("<<<")?.[0]
+                            ?.trim()}
+                        />
+                        <Rows
+                          item={
+                            x?.whois?.["Creation Date"]
+                              ? dayjs().$y -
+                                dayjs(x?.whois?.["Creation Date"].slice(0, 10))
+                                  .$y +
+                                " yrs"
+                              : x?.whois?.["Registered on"]
+                              ? dayjs().$y -
+                                dayjs(x?.whois?.["Registered on"]).$y +
+                                " yrs"
+                              : "N/A"
+                          }
+                        />
+                        <Rows
+                          item={
+                            x?.whois?.["Creation Date"]?.slice(0, 10) ||
+                            x?.whois?.["Registered on"] ||
+                            "N/A"
+                          }
+                        />
+                        <Rows
+                          item={
+                            x?.whois?.["Registry Expiry Date"]?.slice(0, 10) ||
+                            x?.whois?.["Expiry date"] ||
+                            "N/A"
+                          }
+                        />
+                        <Rows
+                          item={
+                            x?.whois?.["Updated Date"]?.slice(0, 10) ||
+                            x?.whois?.["Last updated"] ||
+                            "N/A"
+                          }
+                        />
+                        <Rows item={x?.whois?.["Registrar"]} />
+                        <Rows
+                          item={
+                            x?.whois?.["Name Server"]?.toLowerCase() ||
+                            x?.whois?.["Name servers"]?.toLowerCase() ||
+                            "N/A"
+                          }
+                        />
+                      </tr>
                     ))}
                 </tbody>
               </table>

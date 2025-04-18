@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, Input } from "@nextui-org/react";
+import { addToast, Button, Card, CardBody, Input } from "@heroui/react";
 import { useEffect, useState, useRef } from "react";
 import { Toaster } from "react-hot-toast";
 import CountdownTimer from "./CountdownTimer";
@@ -6,7 +6,7 @@ import { socket } from "../../../socket";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 
-export default function DomainCard({ domain, apis }) {
+export default function DomainCard({ domain, apis, domains, setDomains }) {
   const [waitTime, setWaitTime] = useState(5);
   const [bidAmount, setBidAmount] = useState(5);
   const [maxBidAmount, setMaxBidAmount] = useState(20);
@@ -17,6 +17,12 @@ export default function DomainCard({ domain, apis }) {
   const handleBid = () => {
     if (!bidAmount || isNaN(bidAmount) || Number(bidAmount) <= 0) {
       console.log("Invalid bid amount");
+      addToast({
+        title: "Invalid bid amount",
+        variant: "bordered",
+        color: "danger",
+        timeout: 3000,
+      });
       return;
     }
 
@@ -47,8 +53,6 @@ export default function DomainCard({ domain, apis }) {
           setLoading(false);
           return Number(maxBidAmount);
         }
-
-        console.log(newBidAmount, Number(maxBidAmount));
 
         socket.emit(`${domain?.auction_id}`, {
           domain: domain?.fqdn,
@@ -81,7 +85,7 @@ export default function DomainCard({ domain, apis }) {
     setLoading(false);
   };
   const removeCard = (x) => {
-    domain.filter((domain) => x?.auction_id !== domain?.auction_id);
+    setDomains(domains.filter((dom) => x?.auction_id !== dom?.auction_id));
   };
   return (
     <>

@@ -27,25 +27,24 @@ export default async function ManualBidding(req, res) {
         if (isLoggedIn(token)) {
           axios
             .post(
-              `https://api.godaddy.com/v1/customers/${customerId}/aftermarket/listings/bids`,
+              `https://api.ote-godaddy.com/v1/customers/${customerId}/aftermarket/listings/bids`,
               body,
               {
                 headers,
               }
             )
             .then((x) => {
-              console.log(x?.data);
               res.json("successs");
             })
             .catch((err) => {
-              console.log("some error", err);
+              // console.log("some error", err);
               res.json("error");
             });
           break;
         }
     }
   } catch (err) {
-    console.log("some error occurred");
+    // console.log("some error occurred");
   }
 }
 export const config = {

@@ -1,4 +1,4 @@
-import { Card, CardBody, Link } from "@nextui-org/react";
+import { Card, CardBody, Link } from "@heroui/react";
 import { godaddy, nameCheap } from "./icons";
 import { useSelector } from "react-redux";
 

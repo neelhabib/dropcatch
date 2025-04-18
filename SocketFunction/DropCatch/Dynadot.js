@@ -48,10 +48,10 @@ async function DynadotDropCatch(socket, data) {
             socket.emit("dynadot-dropcatch", { whois: res, domain });
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => err);
     }
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 }
 

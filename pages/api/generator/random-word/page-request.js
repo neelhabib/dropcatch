@@ -28,7 +28,7 @@ export default async function handler(req, res) {
         }))
       )
     )
-    .catch((err) => console.log("error"));
+    .catch((err) => err);
 }
 export const config = {
   api: {

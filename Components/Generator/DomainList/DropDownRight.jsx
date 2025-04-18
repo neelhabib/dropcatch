@@ -10,7 +10,7 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-} from "@nextui-org/react";
+} from "@heroui/react";
 
 export default function DropDownRight({ domain }) {
   const affiliateLinks = useSelector((state) => state?.affiliateLinks);

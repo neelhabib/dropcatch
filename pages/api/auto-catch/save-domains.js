@@ -39,7 +39,6 @@ export default async function handler(req, res) {
               })
             )
             .catch((err) => {
-              console.log(err);
               res.json({
                 status: false,
                 message: "Some Error Occurred. Please try again",
@@ -64,7 +63,7 @@ export default async function handler(req, res) {
       }
     }
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     res.json({ status: false, message: "Error, Please try again." });
   }
 }

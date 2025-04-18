@@ -5,7 +5,7 @@ import DomainCard from "./DomainCard";
 import { useDispatch } from "react-redux";
 import { setBiddingDomains } from "../../../Redux/reducer";
 import BiddingTable from "./BiddingTable";
-import { Card, CardBody } from "@nextui-org/react";
+import { Card, CardBody } from "@heroui/react";
 import EmptyCard from "./EmptyCard";
 
 export default function SingleBidding() {
@@ -47,7 +47,13 @@ export default function SingleBidding() {
     <div className="m-4">
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {domains?.map((x, i) => (
-          <DomainCard key={i} domain={x} apis={apis} />
+          <DomainCard
+            key={i}
+            domains={domains}
+            setDomains={setDomains}
+            domain={x}
+            apis={apis}
+          />
         ))}
       </div>
       <div>{domains?.length === 0 && <EmptyCard />}</div>

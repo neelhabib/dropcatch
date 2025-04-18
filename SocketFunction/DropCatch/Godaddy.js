@@ -167,7 +167,7 @@ async function GodaddyDropCatch(socket, data) {
         .catch((err) => err);
     }
   } catch (err) {
-    console.log("some error occurred");
+    // console.log("some error occurred");
   }
 }
 module.exports = GodaddyDropCatch;

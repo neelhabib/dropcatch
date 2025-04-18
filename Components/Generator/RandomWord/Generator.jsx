@@ -21,7 +21,7 @@ import {
   Input,
   Spacer,
   Spinner,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleChevronDown } from "@fortawesome/free-solid-svg-icons";
 const extensions = ["com", "net", "org", "co", "in", "ai", "info", "xyz", "cc"];

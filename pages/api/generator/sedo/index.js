@@ -19,9 +19,8 @@ export default async function handler(req, res) {
         };
         soap.createClient(sedoUrl, function (err, clients) {
           clients.DomainSearch({ args }, function (err, result) {
-            err && console.log("err");
-            console.log(err);
-            // console.log(result.return.item);
+            // err && console.log("err");
+
             res.json(result?.return?.item);
           });
         });
@@ -29,7 +28,7 @@ export default async function handler(req, res) {
         break;
     }
   } catch (error) {
-    console.log("some error occurred");
+    // console.log("some error occurred");
   }
 }
 export const config = {

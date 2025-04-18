@@ -9,7 +9,7 @@ import {
   setSuffix,
   setPrefix,
 } from "../../../Redux/reducer";
-import { Card } from "@nextui-org/react";
+import { Card } from "@heroui/react";
 const extensions = ["com", "net", "org", "co", "in", "ai", "info", "xyz", "cc"];
 
 export default function RandomDomainGenerator({ data }) {

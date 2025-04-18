@@ -9,7 +9,7 @@ async function SpaceShipDropCatch(socket, data) {
         spaceShip: { api, secret },
       },
     } = data;
-    console.log(api, secret);
+
     const headers = {
       "X-API-Key": api,
       "X-API-Secret": secret,
@@ -38,7 +38,6 @@ async function SpaceShipDropCatch(socket, data) {
           headers,
         })
         .then((res) => {
-          console.log(res.data);
           socket.emit("spaceship-catched", {
             domain,
             status: res.data?.RegisterResponse?.Status,
@@ -46,7 +45,7 @@ async function SpaceShipDropCatch(socket, data) {
             responseCode: res.data?.RegisterResponse?.ResponseCode,
           });
         })
-        .catch((err) => console.log(err));
+        .catch((err) => err);
     }
 
     for (const domain of domains) {
@@ -74,10 +73,10 @@ async function SpaceShipDropCatch(socket, data) {
             socket.emit("spaceship-dropcatch", { whois: res, domain });
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => err);
     }
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 }
 

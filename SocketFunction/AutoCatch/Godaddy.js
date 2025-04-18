@@ -124,7 +124,7 @@ async function Godaddy(domain) {
   };
   try {
     const data = await axios
-      .post(`https://api.godaddy.com/v1/domains/purchase`, body, {
+      .post(`https://api.ote-godaddy.com/v1/domains/purchase`, body, {
         headers,
       })
       .then((res) => res?.data);

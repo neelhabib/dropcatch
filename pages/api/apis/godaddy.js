@@ -92,7 +92,7 @@ export default async function handler(req, res) {
           };
           axios
             .get(
-              `https://api.godaddy.com/v1/shoppers/${shopperId}?includes=customerId`,
+              `https://api.ote-godaddy.com/v1/shoppers/${shopperId}?includes=customerId`,
 
               {
                 headers,
@@ -108,7 +108,7 @@ export default async function handler(req, res) {
       }
     }
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     res.json("Error, Please try again.");
   }
 }

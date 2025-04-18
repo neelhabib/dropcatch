@@ -22,7 +22,7 @@ import {
   RadioGroup,
   Spacer,
   Spinner,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleChevronDown } from "@fortawesome/free-solid-svg-icons";
 

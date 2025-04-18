@@ -36,7 +36,7 @@ async function NameCheap(domain) {
       )
       .then((res) => {
         parser.parseString(res.data, (err, json) => {
-          err && console.log(err);
+          // err && console.log(err);
 
           client
             .db("drop-catch")
@@ -57,7 +57,7 @@ async function NameCheap(domain) {
         });
       });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 }
 module.exports = NameCheap;

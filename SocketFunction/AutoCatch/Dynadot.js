@@ -33,7 +33,7 @@ async function Dynadot(domain) {
         time: dayjs().format("HH:mm:ss"),
       });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 }
 module.exports = Dynadot;

@@ -7,7 +7,7 @@ import {
   TableColumn,
   TableHeader,
   TableRow,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";

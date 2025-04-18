@@ -11,7 +11,7 @@ import {
   Spacer,
   Spinner,
   Textarea,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { setBulkWhois } from "../../Redux/reducer";
 
 let intervalId;

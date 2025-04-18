@@ -1,13 +1,5 @@
-import { useSelector } from "react-redux";
 import { useState } from "react";
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  Chip,
-  Image,
-  useDisclosure,
-} from "@nextui-org/react";
+import { Card, CardBody, CardHeader, Chip, useDisclosure } from "@heroui/react";
 import Modal from "./Modal";
 
 export default function DynadotQueries({
@@ -22,7 +14,7 @@ export default function DynadotQueries({
     onOpen();
     setModalData(data);
   };
-  const cornerImg_2 = `${window.location.origin}/images/corner-2.pngs`;
+  const cornerImg_2 = `${window.location.origin}/images/corner-2.png`;
   return (
     <>
       <Modal onOpenChange={onOpenChange} isOpen={isOpen} data={modalData} />
@@ -35,12 +27,12 @@ export default function DynadotQueries({
           <span className="mr-2">{icon}</span>
           <h4 className="text-medium">{title}</h4>
         </CardHeader>
-        <Image
+        {/* <Image
           removeWrapper
           alt="Card background"
           className="z-0 w-full h-full object-contain object-right absolute"
           src={cornerImg_2}
-        />
+        /> */}
         <CardBody>
           <div className="flex justify-between items-center">
             <h4

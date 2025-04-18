@@ -1,4 +1,4 @@
-import { Button, Chip, Divider, Input, Spacer } from "@nextui-org/react";
+import { Button, Chip, Divider, Input, Spacer } from "@heroui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";

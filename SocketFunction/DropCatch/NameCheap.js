@@ -31,7 +31,7 @@ async function NameCheapDropCatch(socket, data) {
         )
         .then((res) => {
           parser.parseString(res.data, (err, json) => {
-            err && console.log(err);
+            // err && console.log(err);
             socket.emit("namecheap-catched", {
               domain,
               status:
@@ -72,10 +72,10 @@ async function NameCheapDropCatch(socket, data) {
             socket.emit("namecheap-dropcatch", { whois: res, domain });
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => err);
     }
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 }
 

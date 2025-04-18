@@ -4,7 +4,7 @@ import { socket } from "../../../socket";
 import DomainCard from "./DomainCard";
 // import { setBiddingDomains } from "../../../Redux/reducer";
 // import BiddingTable from "./BiddingTable";
-import { Button, Card, CardBody, Input } from "@nextui-org/react";
+import { addToast, Button, Card, CardBody, Input } from "@heroui/react";
 import { useDispatch } from "react-redux";
 import { setMultiBiddingDomains } from "../../../Redux/reducer";
 import BiddingTable from "./BiddingTable";
@@ -25,6 +25,12 @@ export default function MultiBidding() {
       )?.length > 0
     ) {
       console.log("Invalid bid amount");
+      addToast({
+        title: "Invalid bid amount",
+        variant: "bordered",
+        color: "danger",
+        timeout: 3000,
+      });
       return;
     }
     if (biddingInterval.current) {
@@ -102,9 +108,11 @@ export default function MultiBidding() {
   return (
     <div className="m-4">
       {cards?.length > 0 ? (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 bg-blue-100 rounded-lg p-2">
-          <DomainCard cards={cards} setCards={setCards} />
-          <div className="col-span-2">
+        <div className="bg-blue-100 rounded-lg p-2">
+          <div className="grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3">
+            <DomainCard cards={cards} setCards={setCards} />
+          </div>
+          <div className="col-span-2 mt-3">
             <Card>
               <CardBody>
                 <div className="flex justify-between items-center gap-4">

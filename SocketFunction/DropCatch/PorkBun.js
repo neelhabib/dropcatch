@@ -37,7 +37,7 @@ async function PorkBunDropCatch(socket, data) {
           headers,
         })
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           socket.emit("spaceship-catched", {
             domain,
             status: res.data?.RegisterResponse?.Status,
@@ -45,7 +45,7 @@ async function PorkBunDropCatch(socket, data) {
             responseCode: res.data?.RegisterResponse?.ResponseCode,
           });
         })
-        .catch((err) => console.log(err));
+        .catch((err) => err);
     }
 
     for (const domain of domains) {
@@ -73,10 +73,10 @@ async function PorkBunDropCatch(socket, data) {
             socket.emit("spaceship-dropcatch", { whois: res, domain });
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => err);
     }
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 }
 

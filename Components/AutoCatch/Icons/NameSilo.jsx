@@ -1,4 +1,4 @@
-import { Image } from "@nextui-org/react";
+import { Image } from "@heroui/react";
 
 const namesilo = "/img/icons/namesilo.jpeg";
 export default function NameSilo() {
