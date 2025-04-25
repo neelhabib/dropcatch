@@ -11,7 +11,7 @@ import {
   NavbarItem,
 } from "@heroui/react";
 import React from "react";
-import DarkModeSwitch from "./darkmodeswitch";
+
 import { useDispatch } from "react-redux";
 import { setLoggedIn } from "../../Redux/reducer";
 import NextLink from "next/link";

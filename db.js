@@ -1,24 +1,39 @@
 const { MongoClient } = require("mongodb");
-
 const localConnectionString =
   process.env.MONGODB_URI || "mongodb://localhost:27017";
-const client = new MongoClient(localConnectionString);
 
-let isClientConnected = false;
+// Create a cached connection variable
+let cachedClient = null;
+let cachedDb = null;
 
-const connectToMongoDB = async () => {
-  if (!isClientConnected) {
-    try {
-      await client.connect();
-      console.log("Successfully connected to MongoDB");
-      isClientConnected = true;
-    } catch (error) {
-      console.error("Error connecting to MongoDB:", error);
-      throw error;
-    }
+async function connectToMongoDB() {
+  // If the connection already exists, reuse it
+  if (cachedClient && cachedDb) {
+    return {
+      client: cachedClient,
+      db: cachedDb,
+    };
   }
-  return client; // Return the client object after connecting
-};
 
-// Export both the connection function and the MongoDB client
-module.exports = { connectToMongoDB, client };
+  // If no connection exists, create a new one
+  const client = new MongoClient(localConnectionString, {
+    // Recommended options for serverless environments
+    maxPoolSize: 10,
+    minPoolSize: 0,
+    maxIdleTimeMS: 15000,
+  });
+
+  await client.connect();
+  const db = client.db("drop-catch");
+
+  // Cache the client and db instances
+  cachedClient = client;
+  cachedDb = db;
+
+  return {
+    client: cachedClient,
+    db: cachedDb,
+  };
+}
+
+module.exports = { connectToMongoDB };

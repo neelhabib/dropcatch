@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 const startServer = async () => {
   try {
     // Connect to MongoDB first
-    await connectToMongoDB();
+    // await connectToMongoDB();
     console.log("MongoDB connection established.");
 
     // Create and start the HTTP server

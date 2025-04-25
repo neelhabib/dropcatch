@@ -1,9 +1,9 @@
-const { client } = require("../../db");
+const { connectToMongoDB } = require("../../db");
 
 async function FetchDomains() {
   try {
-    const domains = await client
-      .db("drop-catch")
+    const { db } = await connectToMongoDB();
+    const domains = await await db
       .collection("auto-catch-domains")
       .findOne({}, { projection: { _id: 0 } });
 
@@ -11,6 +11,7 @@ async function FetchDomains() {
   } catch (error) {
     console.error("Error fetching domains:", error);
     return [];
+  } finally {
   }
 }
 module.exports = FetchDomains;

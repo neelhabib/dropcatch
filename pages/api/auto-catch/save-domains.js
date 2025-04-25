@@ -1,7 +1,9 @@
 import isLoggedIn from "../isLoggedIn";
-import { client } from "../../../db";
+import { connectToMongoDB } from "../../../db";
 export default async function handler(req, res) {
   try {
+    // Create a new client for this request
+    const { db } = await connectToMongoDB();
     switch (req.method) {
       case "POST": {
         const {
@@ -15,8 +17,7 @@ export default async function handler(req, res) {
         } = req.body;
         const tk = token?.token;
         if (isLoggedIn(tk)) {
-          client
-            .db("drop-catch")
+          await db
             .collection("auto-catch-domains")
             .updateOne(
               {},
@@ -53,8 +54,7 @@ export default async function handler(req, res) {
 
       case "GET": {
         if (isLoggedIn(req?.query?.token)) {
-          client
-            .db("drop-catch")
+          await db
             .collection("auto-catch-domains")
             .findOne()
             .then((docs) => res.json(docs));
@@ -65,6 +65,7 @@ export default async function handler(req, res) {
   } catch (err) {
     // console.log(err);
     res.json({ status: false, message: "Error, Please try again." });
+  } finally {
   }
 }
 

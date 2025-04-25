@@ -1,8 +1,5 @@
 import axios from "axios";
-import { MongoClient } from "mongodb";
-import path from "path";
-import fs from "fs";
-const filePath = path.join(process.cwd(), "db.json");
+
 const extensions = [
   "co",
   "co.in",
@@ -16,10 +13,8 @@ const extensions = [
   "cn",
 ];
 
-import { client } from "../../../../db";
+import { connectToMongoDB } from "../../../../db";
 export default async function handler(req, res) {
-  const data = fs.readFileSync(filePath, "utf-8");
-  const database = JSON.parse(data);
   const params = {
     names: req.body?.words?.toString(),
     tlds: req.body?.ext,
@@ -29,10 +24,10 @@ export default async function handler(req, res) {
   const domains = req.body?.words?.map((x) => x?.concat(`.${req.body?.ext}`));
 
   try {
-    await client.connect();
+    // Create a new client for this request
+    const { db } = await connectToMongoDB();
 
-    const api = await client
-      .db("drop-catch")
+    const api = await db
       .collection("apis")
       .findOne({})
       .then((docs) => docs?.godaddy);
@@ -85,7 +80,6 @@ export default async function handler(req, res) {
     res.json([{ domain: "Something is wrong, please try again." }]);
   } finally {
     // Close the connection when the processing is done or an error occurs
-    await client.close();
   }
 }
 

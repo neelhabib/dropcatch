@@ -1,9 +1,10 @@
 const WhoisLight = require("whois-light");
-const { client } = require("../../db");
+const { connectToMongoDB } = require("../../db");
 const dayjs = require("dayjs");
 
 async function whois(domain) {
   try {
+    const { db } = await connectToMongoDB();
     const res = await WhoisLight.lookup({ format: true }, domain);
 
     // Consolidate possible indicators of registration
@@ -35,19 +36,17 @@ async function whois(domain) {
         : "unknown";
 
     // Save whois to database
-    await client
-      .db("drop-catch")
-      .collection("domains-whois")
-      .insertOne({
-        domain,
-        availability,
-        time: dayjs().format("HH:mm:ss"),
-        date: dayjs().format("D MMM YYYY"),
-      });
+    await await db.collection("domains-whois").insertOne({
+      domain,
+      availability,
+      time: dayjs().format("HH:mm:ss"),
+      date: dayjs().format("D MMM YYYY"),
+    });
     return availability;
   } catch (err) {
     console.error("WHOIS lookup failed:", err);
     return "unknown"; // Return a default status in case of an error
+  } finally {
   }
 }
 

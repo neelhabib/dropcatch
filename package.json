@@ -1,7 +1,7 @@
 {
   "name": "drop-catch-software",
   "version": "1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "node start.js",
     "build": "next build",
@@ -20,10 +20,8 @@
     "express": "^4.18.2",
     "framer-motion": "^12.7.3",
     "jsonwebtoken": "^9.0.2",
-    "lowdb": "^7.0.1",
     "mongodb": "^6.11.0",
     "next": "^13.4.2",
-    "next-themes": "0.2.1",
     "random-words": "^2.0.1",
     "react": "18.2.0",
     "react-content-loader": "^7.0.2",
@@ -31,7 +29,6 @@
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.5.0",
     "react-redux": "^8.1.2",
-    "react-scan": "^0.0.33",
     "simplebar-react": "^3.2.6",
     "soap": "^1.1.7",
     "socket.io": "^4.8.1",

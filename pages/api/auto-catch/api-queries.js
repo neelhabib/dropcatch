@@ -1,13 +1,14 @@
 import isLoggedIn from "../isLoggedIn";
-import { client } from "../../../db";
+import { connectToMongoDB } from "../../../db";
 
 export default async function handler(req, res) {
   try {
+    // Create a new client for this request
+    const { db } = await connectToMongoDB();
     switch (req.method) {
       case "POST":
         if (isLoggedIn(req.body.token)) {
-          client
-            .db("drop-catch")
+          await db
             .collection("api-responses")
             .deleteMany({})
             .then((result) => {
@@ -25,8 +26,7 @@ export default async function handler(req, res) {
 
       case "GET":
         if (isLoggedIn(req?.query?.token)) {
-          client
-            .db("drop-catch")
+          await db
             .collection("api-responses")
             .find()
             .sort({ _id: -1 })
@@ -39,6 +39,7 @@ export default async function handler(req, res) {
   } catch (err) {
     // console.log(err);
     res.json({ status: false, message: "Error, Please try again." });
+  } finally {
   }
 }
 
