@@ -77,7 +77,9 @@ export default function GodaddyApi() {
       .then((res) => {
         console.log(res.data);
         setCustomerId(res.data?.customerId);
-        toast.success("");
+        toast.success(res.data?.message, {
+          position: "bottom-right",
+        });
       })
       .catch((err) => {
         toast.error(
