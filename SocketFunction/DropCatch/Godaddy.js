@@ -116,7 +116,7 @@ async function GodaddyDropCatch(socket, data) {
         renewAuto: true,
       };
       axios
-        .post(`https://api.ote-godaddy.com/v1/domains/purchase`, body, {
+        .post(`https://api.godaddy.com/v1/domains/purchase`, body, {
           headers,
         })
         .then((res) => {

@@ -92,7 +92,7 @@ export default async function handler(req, res) {
           };
           axios
             .get(
-              `https://api.ote-godaddy.com/v1/shoppers/${shopperId}?includes=customerId`,
+              `https://api.godaddy.com/v1/shoppers/${shopperId}?includes=customerId`,
 
               {
                 headers,

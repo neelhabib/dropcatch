@@ -39,7 +39,7 @@ export default async function handler(req, res) {
 
       axios
         .post(
-          `https://api.ote-godaddy.com/v1/domains/available?checkType=FULL`,
+          `https://api.godaddy.com/v1/domains/available?checkType=FULL`,
           domains,
           { headers }
         )

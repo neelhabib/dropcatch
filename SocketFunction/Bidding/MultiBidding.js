@@ -19,7 +19,7 @@ async function MultiBidding(socket) {
 
       axios
         .post(
-          `https://api.ote-godaddy.com/v1/customers/${customerId}/aftermarket/listings/bids`,
+          `https://api.godaddy.com/v1/customers/${customerId}/aftermarket/listings/bids`,
           body,
           {
             headers,

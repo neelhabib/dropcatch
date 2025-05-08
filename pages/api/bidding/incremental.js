@@ -29,7 +29,7 @@ export default async function ManualBidding(req, res) {
           res.json("hello");
           // axios
           //   .post(
-          //     `https://api.ote-godaddy.com/v1/customers/${customerId}/aftermarket/listings/bids`,
+          //     `https://api.godaddy.com/v1/customers/${customerId}/aftermarket/listings/bids`,
           //     body,
           //     {
           //       headers,
